@@ -83,7 +83,7 @@ npx prisma generate
 
 We can start using PrismaClient to interact with our database. We’ll use a single PrismaClient instance that we can import into any file where needed. Create a new `./prisma/prisma.ts` file:
 
-```javascript
+```js
 import { PrismaClient } from "@prisma/client";
 let prisma;
 if (process.env.NODE_ENV === "production") {
@@ -121,7 +121,7 @@ NEXTAUTH_URL=http://localhost:3000
 
 To add NextAuth.js to a project, create a file called `[...nextauth].ts` in pages/api/auth. This contains the dynamic route handler for NextAuth.js, which will also contain all your global NextAuth.js configurations. All requests to /api/auth/\* (signIn, callback, signOut, etc.) will automatically be handled by NextAuth.js. We also configure your NextAuth.js to use the Prisma Adapter and Prisma client.
 
-```js {1-10} showLineNumbers
+```js
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
@@ -150,7 +150,7 @@ Take note of the callbacks object; this is where we populate the user session wi
 
 The useSession() React Hook in the NextAuth.js client is the easiest way to check if someone is signed in. To be able to use useSession first you’ll need to expose the session context, [**SessionProvider**](https://next-auth.js.org/getting-started/client#sessionprovider), at the top level of your application:
 
-```javascript
+```js
 import { SessionProvider } from "next-auth/react";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {

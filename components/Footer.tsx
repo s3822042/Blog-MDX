@@ -17,7 +17,7 @@ const Footer = () => {
         <div className="mt-2 text-xl text-center text-gray-500 dark:text-gray-400 md:mt-0">
           <Link href={siteMetadata.github} className="inline-block pt-1 mx-1">
             <svg
-              className="w-6 h-6 text-gray-500 fill-current dark:text-gray-400 hover:text-white"
+              className="w-6 h-6 text-gray-500 fill-current dark:text-gray-400 hover:text-black dark:hover:text-white"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -26,7 +26,7 @@ const Footer = () => {
           </Link>
           <Link href={siteMetadata.linkedin} className="inline-block pt-1 mx-1">
             <svg
-              className="w-6 h-6 text-gray-500 fill-current dark:text-gray-400 hover:text-white"
+              className="w-6 h-6 text-gray-500 fill-current dark:text-gray-400 hover:text-black dark:hover:text-white"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -35,7 +35,7 @@ const Footer = () => {
           </Link>
           <Link href={siteMetadata.facebook} className="inline-block pt-1 mx-1">
             <svg
-              className="w-6 h-6 text-gray-500 fill-current dark:text-gray-400 hover:text-white"
+              className="w-6 h-6 text-gray-500 fill-current dark:text-gray-400 hover:text-black dark:hover:text-white"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
