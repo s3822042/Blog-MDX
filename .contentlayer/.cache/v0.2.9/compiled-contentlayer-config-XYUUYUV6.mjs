@@ -1,33 +1,31 @@
+// contentlayer.config.js
 import {
   defineDocumentType,
   defineNestedType,
-  makeSource,
+  makeSource
 } from "contentlayer/source-files";
 import readingTime from "reading-time";
 import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
-
-const computedFields = {
+var computedFields = {
   readingTime: { type: "json", resolve: (doc) => readingTime(doc.body.raw) },
   wordCount: {
     type: "number",
-    resolve: (doc) => doc.body.raw.split(/\s+/gu).length,
+    resolve: (doc) => doc.body.raw.split(/\s+/gu).length
   },
   slug: {
     type: "string",
-    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ""),
-  },
+    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, "")
+  }
 };
-
-const Author = defineNestedType(() => ({
+var Author = defineNestedType(() => ({
   name: "Author",
   fields: {
     name: { type: "string", required: true },
-    image: { type: "string", required: true },
-  },
+    image: { type: "string", required: true }
+  }
 }));
-
-const Article = defineDocumentType(() => ({
+var Article = defineDocumentType(() => ({
   name: "Article",
   filePathPattern: "articles/*.mdx",
   contentType: "mdx",
@@ -39,20 +37,22 @@ const Article = defineDocumentType(() => ({
     category: { type: "string", required: true },
     author: {
       type: "nested",
-      of: Author,
+      of: Author
     },
-    image: { type: "string", required: true },
+    image: { type: "string", required: true }
   },
-  computedFields,
+  computedFields
 }));
-
-const contentLayerConfig = makeSource({
+var contentLayerConfig = makeSource({
   contentDirPath: "data",
   documentTypes: [Article],
   mdx: {
     remarkPlugins: [],
-    rehypePlugins: [rehypePrism, rehypeSlug],
-  },
+    rehypePlugins: [rehypePrism]
+  }
 });
-
-export default contentLayerConfig;
+var contentlayer_config_default = contentLayerConfig;
+export {
+  contentlayer_config_default as default
+};
+//# sourceMappingURL=compiled-contentlayer-config-XYUUYUV6.mjs.map

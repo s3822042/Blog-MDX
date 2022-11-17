@@ -3,10 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "format": "prettier --write . '**/*.{json,md,js,ts,tsx}'",
+    "format:write": "prettier --write . '**/*.{json,md,js,ts,tsx}'",
+    "format:check": "prettier --check . '**/*.{json,md,js,ts,tsx}'",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
+    "lint:fix": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx . --fix",
+    "test": "jest",
+    "analyze": "cross-env ANALYZE=true next build",
+    "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
+    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
+    "rss": "node scripts/rss.mjs",
+    "sitemap": "node scripts/sitemap.mjs",
+    "postbuild": "npm run rss && npm run sitemap"
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.3",
@@ -17,16 +28,22 @@
     "contentlayer": "^0.2.9",
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.3",
+    "globby": "^13.1.2",
     "next": "13.0.3",
     "next-contentlayer": "^0.2.9",
     "next-seo": "^5.14.1",
     "next-themes": "^0.2.1",
+    "prettier": "^2.7.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "reading-time": "^1.5.0",
+    "rehype-prism-plus": "^1.5.0",
+    "rehype-slug": "^5.1.0",
+    "rss": "^1.2.2",
     "typescript": "4.9.3"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^13.0.3",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.19",
     "tailwindcss": "^3.2.4"

@@ -59,7 +59,7 @@ npx prisma init
 
 This creates a basic `/prisma/schema.prisma` file. This schema is adapted for use in Prisma and based on NextAuth main schema. We will modify the schema to work with NextAuth, enter the following code into the schema:
 
-```javascript
+```js
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
@@ -121,7 +121,7 @@ NEXTAUTH_URL=http://localhost:3000
 
 To add NextAuth.js to a project, create a file called `[...nextauth].ts` in pages/api/auth. This contains the dynamic route handler for NextAuth.js, which will also contain all your global NextAuth.js configurations. All requests to /api/auth/\* (signIn, callback, signOut, etc.) will automatically be handled by NextAuth.js. We also configure your NextAuth.js to use the Prisma Adapter and Prisma client.
 
-```javascript
+```js {1-10} showLineNumbers
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";

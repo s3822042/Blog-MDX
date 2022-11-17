@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>localhost:3000/article/404</loc>
+  </url>
+
+  <url>
+    <loc>localhost:3000/article/</loc>
+  </url>
+
+  <url>
+    <loc>localhost:3000/article/authentication-with-next-and-prisma</loc>
+  </url>
+</urlset>
