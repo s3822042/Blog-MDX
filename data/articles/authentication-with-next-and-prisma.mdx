@@ -1,0 +1,183 @@
+---
+title: Authentication and DB access with Next, Prisma
+publishedAt: "2022-11-17"
+description: A sample description of this application.
+seoDescription: This is the seoDescription for this markdown file.
+category: "Software Engineering"
+author: { name: "Vo Thanh Luan", image: "https://imgur.com/wnuKAT5.jpg" }
+image: https://imgur.com/fnduee1.jpg'
+---
+
+Building modern full-stack applications has gotten easier for frontend developers with new technologies and tools.With these, we can build frontend applications with server-side capabilities with frameworks like Next.js.We can also abstract the complex details of interfacing with a database using an ORM like Prisma.In this tutorial, we’ll learn how to build a full-stack application with authentication and CRUD functionality using Next.js, Prisma & MongoDB. We’ll explain these technologies and related concepts and see how we can put these technologies together to build an application.
+
+## Prisma
+
+Prisma is a next-generation object-relational mapper (ORM) that can be used to access a database in Node.js and TypeScript applications. We’ll use Prisma to interact with our MongoDB database to CREATE, READ, UPDATE and DELETE notes, create users in our database, and define the schema for users and notes.
+
+Cool, but what’s an ORM, and why do we need Prisma to access our database? Object Relational Mapping is a technique used to access and manage relational databases using an object-oriented programming language (like JavaScript). Prisma ORM works for MongoDB too, which is the document-based database that we’ll be using in the article. ORMs let you model your application data by mapping classes to tables in the database, and instances of classes are mapped to rows in the tables. In Prisma, though, which takes a somewhat different approach from other traditional ORMs, the application models are defined in your Prisma schema.
+
+Next, let’s take a look at MongoDB.
+
+## MongoDB
+
+MongoDB is a No-SQL database that stores data in documents in a JSON-like format. Collections are a set of documents equivalent to a table in a relational database. With a document data model that maps to how developers think and code and a powerful, unified query API, MongoDB powers faster, more flexible application development. This is where we will store our data.
+
+## Next.js
+
+Next.js is an open-source React framework that makes it easier to build production-ready react applications by providing multiple features like server-side rendering and static-site generation, which renders the application on the server and hydrates (add the JavaScript functionality) on the client (browser). Next.js also includes features like API Routes, File-system Routing, Fast Refresh, Built-in CSS Support, Meta tags, and many more.
+
+## Prerequisites
+
+Before going further, you need:
+
+- Basic knowledge of JavaScript, React and Next.js
+- Node.js
+- A MongoDB Database. Make sure that your MongoDB deployment is configured with replica sets to be able to integrate with Prisma. You can launch a free instance of MongoDB on MongoDB Atlas, which has **replica set** support out-of-the-box. You can also convert standalone to replica set if you want to work with MongoDB locally.
+- A Google account and access to the Google Cloud Console
+- IDE preferably Visual Studio Code with Prisma extension
+
+In addition, you are expected to have basic knowledge of these technologies.
+
+## Setting up NextAuth, Prisma & MongoDB
+
+An Adapter in NextAuth.js connects your application to whatever database or backend system you want to use to store data for users, their accounts, sessions, etc. We will be using the Prisma adapter. To use this Adapter, you need to install Prisma Client, Prisma CLI, and the separate **@next-auth/prisma-adapter** package:
+
+```bash
+npm install next-auth @prisma/client @next-auth/prisma-adapter
+npm install --save-dev prisma
+```
+
+Let’s set up our MongoDB cluster so we can configure our NextAuth.js to use the Prisma Adapter. Log in to MongoDB and set up a MongoDB cluster on Atlas. Go to Projects and create a new project then create new cluster
+
+## Working with Prisma
+
+We can use the Prisma CLI tool to create a couple of Prisma-related files. Run:
+
+```bash
+npx prisma init
+```
+
+This creates a basic /prisma/schema.prisma file. This schema is adapted for use in Prisma and based on NextAuth main schema. We will modify the schema to work with NextAuth; enter the following code into the schema:
+
+```javascript
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+generator client {
+  provider        = "prisma-client-js"
+}
+```
+
+Make sure to change the provider to **mongodb** and then create schema of the database in the [prisma syntax](https://www.prisma.io/docs/concepts/components/prisma-schema).
+
+Now that we have written our schema, we can create the collections in our database. Using the Prisma using the CLI tool, run `npx prisma db push`
+
+We should see our new collections if we check our database collection in Atlas.
+
+Awesome! Now, to interact with our database, we must first generate the Prisma Client. Use the Prisma CLI to generate the Prisma Client.
+
+```bash
+npx prisma generate
+```
+
+We can start using PrismaClient to interact with our database. We’ll use a single PrismaClient instance that we can import into any file where needed. Create a new ./prisma/prisma.ts file:
+
+```javascript
+import { PrismaClient } from "@prisma/client";
+let prisma;
+if (process.env.NODE_ENV === "production") {
+  prisma = new PrismaClient();
+} else {
+  if (!global.prisma) {
+    global.prisma = new PrismaClient();
+  }
+  prisma = global.prisma;
+}
+export default prisma;
+```
+
+## Set up our Google application
+
+We’ll be using Google provider for this project, and so we need to get our environment variables to configure our Google provider.
+
+1. Log into Google Cloud console
+2.Click on the dropdown which opens a modal; in the top right corner of the modal, click on **New Project**, to create a new project.
+3. Enter the project name and click create. Once the project is created, click on **SELECT PROJECT** in the notifications modal.
+4. Go to **APIs & Services > Credentials**.
+5. Configure the consent screen -> External user -> Add app information -> Create credentials
+6. Add an authorized Google URI for development - **http://localhost:3000/api/auth/callback/google**
+7. Click on Create, and after the client ID has been created, we will have our Client ID and Client Secret. Create a .env file to save these variables
+
+```bash
+GOOGLE_CLIENT_ID=<client_ID_here>
+GOOGLE_CLIENT_SECRET=<client_secret_here>
+DATABASE_URL=<your_mongodb_database_url>
+NEXTAUTH_SECRET=somesecret
+NEXTAUTH_URL=http://localhost:3000
+```
+
+## Set up NextAuth with the Prisma adapter
+
+To add NextAuth.js to a project, create a file called [...nextauth].ts in pages/api/auth. This contains the dynamic route handler for NextAuth.js, which will also contain all your global NextAuth.js configurations. All requests to /api/auth/\* (signIn, callback, signOut, etc.) will automatically be handled by NextAuth.js. We also configure your NextAuth.js to use the Prisma Adapter and Prisma client.
+
+```javascript
+import NextAuth from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import prisma from "../../../prisma/prisma";
+
+export default NextAuth({
+  adapter: PrismaAdapter(prisma),
+  providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+  ],
+  callbacks: {
+    async session({ session, token, user }) {
+      session.user.id = user.id;
+      return session;
+    },
+  },
+});
+```
+
+Take note of the callbacks object; this is where we populate the user session with their id as NextAuth does not provide this value by default.
+
+## Configure the NextAuth Shared session state
+
+The useSession() React Hook in the NextAuth.js client is the easiest way to check if someone is signed in. To be able to use useSession first you’ll need to expose the session context, [**SessionProvider**](https://next-auth.js.org/getting-started/client#sessionprovider), at the top level of your application:
+
+```javascript
+import { SessionProvider } from "next-auth/react";
+
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+  return (
+    <SessionProvider session={session}>
+      <Component {...pageProps} />
+    </SessionProvider>
+  );
+}
+export default MyApp;
+```
+
+Instances of useSession will then have access to the session data and status. The component SessionProvider also keeps the session updated and synced between browser tabs and windows.
+
+**Quick note**: To display images from another domain using Next.js Image, we need to add it to a list of domains in our ./next.config.js file
+```javascript
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    domains: ['lh3.googleusercontent.com'],
+  },
+}
+module.exports = nextConfig
+```
+
+Now, you can make change to your prisma schema and to sync with the mongoDB database, simply run `npx prisma db push`
+
+## Conclusion
+
+It’s a popular fact that Next.js and Prisma are great for building fast full-stack applications. In this tutorial, we built a notes application where users can log in to the application thanks to NextAuth, create, view, edit and delete notes. All user information and notes are saved to a MongoDB database. To interact with the database from the Next.js application, we used the Prisma ORM, which helps us define our schema and create and connect to our database for us to manage it.
