@@ -28,7 +28,7 @@ export default function ArticleCard({
                   <h2 className="mb-1 text-xs font-medium tracking-widest text-gray-400 title-font">
                     {category}
                   </h2>
-                  <h1 className="mb-3 text-lg font-medium text-gray-900 title-font">
+                  <h1 className="mb-3 text-lg font-medium text-gray-900 title-font dark:text-white">
                     {title}
                   </h1>
                   <p className="mb-3 leading-relaxed">{description}</p>

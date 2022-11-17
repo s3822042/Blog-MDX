@@ -57,7 +57,7 @@ We can use the Prisma CLI tool to create a couple of Prisma-related files. Run:
 npx prisma init
 ```
 
-This creates a basic /prisma/schema.prisma file. This schema is adapted for use in Prisma and based on NextAuth main schema. We will modify the schema to work with NextAuth; enter the following code into the schema:
+This creates a basic `/prisma/schema.prisma` file. This schema is adapted for use in Prisma and based on NextAuth main schema. We will modify the schema to work with NextAuth, enter the following code into the schema:
 
 ```javascript
 datasource db {
@@ -81,7 +81,7 @@ Awesome! Now, to interact with our database, we must first generate the Prisma C
 npx prisma generate
 ```
 
-We can start using PrismaClient to interact with our database. We’ll use a single PrismaClient instance that we can import into any file where needed. Create a new ./prisma/prisma.ts file:
+We can start using PrismaClient to interact with our database. We’ll use a single PrismaClient instance that we can import into any file where needed. Create a new `./prisma/prisma.ts` file:
 
 ```javascript
 import { PrismaClient } from "@prisma/client";
@@ -119,7 +119,7 @@ NEXTAUTH_URL=http://localhost:3000
 
 ## Set up NextAuth with the Prisma adapter
 
-To add NextAuth.js to a project, create a file called [...nextauth].ts in pages/api/auth. This contains the dynamic route handler for NextAuth.js, which will also contain all your global NextAuth.js configurations. All requests to /api/auth/\* (signIn, callback, signOut, etc.) will automatically be handled by NextAuth.js. We also configure your NextAuth.js to use the Prisma Adapter and Prisma client.
+To add NextAuth.js to a project, create a file called `[...nextauth].ts` in pages/api/auth. This contains the dynamic route handler for NextAuth.js, which will also contain all your global NextAuth.js configurations. All requests to /api/auth/\* (signIn, callback, signOut, etc.) will automatically be handled by NextAuth.js. We also configure your NextAuth.js to use the Prisma Adapter and Prisma client.
 
 ```javascript
 import NextAuth from "next-auth";
@@ -165,7 +165,7 @@ export default MyApp;
 
 Instances of useSession will then have access to the session data and status. The component SessionProvider also keeps the session updated and synced between browser tabs and windows.
 
-**Quick note**: To display images from another domain using Next.js Image, we need to add it to a list of domains in our ./next.config.js file
+**Quick note**: To display images from another domain using Next.js Image, we need to add it to a list of domains in our `./next.config.js` file
 ```javascript
 const nextConfig = {
   reactStrictMode: true,

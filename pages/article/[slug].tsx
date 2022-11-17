@@ -1,7 +1,7 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { allArticles } from "contentlayer/generated";
 import { NextSeo } from "next-seo";
-import { SingleArticle } from "../../components/SingleArticle";
+import { SingleArticle } from "components";
 
 const SinglePost = ({ article }: any) => {
   const MDXContent = useMDXComponent(article.body.code);

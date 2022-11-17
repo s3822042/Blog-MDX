@@ -1,7 +1,7 @@
 import Head from "next/head";
-import ArticleCard from "../components/ArticleCard";
+import ArticleCard from "components/ArticleCard";
 import { allArticles } from "contentlayer/generated";
-import { select } from "../utils/select";
+import { select } from "utils/select";
 export default function Home({ articles }: any) {
   return (
     <div>
