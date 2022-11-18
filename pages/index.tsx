@@ -41,6 +41,7 @@ export default function Home({ articles }: any) {
               slug={slug}
               image={image}
               tags={tags}
+              categories={categories}
               dateTime={publishedAt}
               date={publishedAt}
               readingTime={readingTime.text}

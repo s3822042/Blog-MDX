@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function SingleArticle({
   author,
   image,
-  category,
+  categories,
   title,
   children,
 }: any) {
@@ -12,7 +12,7 @@ export default function SingleArticle({
       <div className="max-w-[60%] mx-auto">
         <div className="flex flex-col items-center justify-center">
           <p className="block text-base font-semibold tracking-wide text-center text-indigo-600 uppercase dark:text-white">
-            {category}
+            {categories[0].title}
           </p>
           <h1 className="block mt-2 mb-10 text-6xl font-extrabold leading-8 tracking-tight text-center text-gray-900 sm:text-4xl dark:text-white">
             {title}

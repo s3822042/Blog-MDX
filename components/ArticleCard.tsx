@@ -1,15 +1,20 @@
 import React from "react";
 import Image from "next/image";
+import { slugify } from "utils/helper";
+import Link from "next/link";
 
 export default function ArticleCard({
   title,
   description,
   slug,
   image,
-  category,
+  categories,
   dateTime,
   readingTime,
+  tags,
 }: any) {
+  const categoryTitle = slugify(categories[0].title);
+
   return (
     <div>
       <section className="text-gray-600 body-font">
@@ -25,13 +30,30 @@ export default function ArticleCard({
                   alt="blog"
                 />
                 <div className="p-6">
-                  <h2 className="mb-1 text-xs font-medium tracking-widest text-gray-400 title-font">
-                    {category}
-                  </h2>
+                  <a href={`/category/${categoryTitle}`}>
+                    <h2 className="mb-1 text-xs font-medium tracking-widest text-gray-400 title-font">
+                      {categories[0].title}
+                    </h2>
+                  </a>
+
                   <h1 className="mb-3 text-lg font-medium text-gray-900 title-font dark:text-white">
                     {title}
                   </h1>
-                  <p className="mb-3 leading-relaxed">{description}</p>
+                  <p className="mb-3 leading-relaxed ">{description}</p>
+                  <div className="mb-3">
+                    {tags.map((tag: any) => {
+                      const tagTitle = slugify(tag.title);
+
+                      return (
+                        <Link href={`/tag/${tagTitle}`} key={tag}>
+                          <span className="mr-2 font-bold hover:text-indigo-600">
+                            #{tag.title}
+                          </span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+
                   <div className="flex flex-wrap items-center ">
                     <a
                       href={`/article/${slug}`}
