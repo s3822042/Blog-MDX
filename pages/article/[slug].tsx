@@ -15,7 +15,7 @@ const SinglePost = ({ article }: any) => {
       <SingleArticle
         image={article.image}
         title={article.title}
-        category={article.category}
+        categories={article.categories}
         author={article.author}
       >
         <MDXContent components={{ ...MDXComponents } as any} />

@@ -4,6 +4,7 @@ const show_per_page = 10;
 
 export function slugify(title: any) {
   return title
+    .toString()
     .toLowerCase()
     .trim()
     .replace(/[^\w ]+/g, "")

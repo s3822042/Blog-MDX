@@ -9,6 +9,8 @@ export default function Home({ articles }: any) {
   const filteredArticlePosts = articles.filter((article: any) =>
     article.title.toLowerCase().includes(searchValue.toLowerCase())
   );
+
+  console.log("articles", allArticles);
   return (
     <div>
       <Head>
@@ -27,7 +29,7 @@ export default function Home({ articles }: any) {
             description,
             slug,
             image,
-            category,
+            categories,
             tags,
             publishedAt,
             readingTime,
@@ -38,7 +40,6 @@ export default function Home({ articles }: any) {
               description={description}
               slug={slug}
               image={image}
-              category={category}
               tags={tags}
               dateTime={publishedAt}
               date={publishedAt}
@@ -62,7 +63,7 @@ export function getStaticProps() {
         "readingTime",
         "author",
         "tags",
-        "category",
+        "categories",
         "image",
       ])
     )

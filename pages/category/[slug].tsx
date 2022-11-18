@@ -3,11 +3,9 @@ import { allArticles } from "contentlayer/generated";
 import { NextSeo } from "next-seo";
 import { siteMetadata } from "utils/constant";
 import { slugify } from "utils/helper";
-import kebabCase from "utils/kebabCase";
 
-export default function Tag({ articles, slug }: any) {
-  // Capitalize first letter and convert space to dash
-  const title = slug[0].toUpperCase() + slug.split(" ").join("-").slice(1);
+export default function Category({ articles, slug }: any) {
+  const title = slug[0].toUpperCase() + slug.slice(1);
   return (
     <>
       <NextSeo
@@ -16,7 +14,7 @@ export default function Tag({ articles, slug }: any) {
       />
       <div className="flex justify-center text-3xl">
         <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-          Tag: {title} ({articles.length}){" "}
+          Category: {title} ({articles.length}){" "}
         </h1>
       </div>
 
@@ -53,10 +51,10 @@ export default function Tag({ articles, slug }: any) {
 
 export async function getStaticPaths() {
   let paths: any = [];
-  // get all tag paths
+  // get all category paths
   allArticles.map((article: any) => {
-    article.tags.map((tag: any) => {
-      const slug = slugify(tag.title);
+    article.categories.map((category: any) => {
+      const slug = slugify(category.title);
       paths.push({ params: { slug } });
     });
   });
@@ -71,11 +69,11 @@ export async function getStaticProps({
 }) {
   let articles: any = [];
 
-  // get all tag posts base on slug
+  // get all category posts base on slug
   allArticles.map((article: any) => {
-    article.tags.filter((tag: any) => {
-      const tagSlug = slugify(tag.title);
-      if (tagSlug === slug) {
+    article.categories.filter((category: any) => {
+      const categorySlug = slugify(category.title);
+      if (categorySlug === slug) {
         articles.push(article);
       }
     });
