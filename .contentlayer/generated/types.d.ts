@@ -17,7 +17,8 @@ export type Article = {
   publishedAt: string
   description: string
   seoDescription: string
-  category: string
+  categories?: Categories[] | undefined
+  tags?: Tag[] | undefined
   author?: Author | undefined
   image: string
   /** MDX file body */
@@ -36,6 +37,24 @@ export type Author = {
   name: string
   image: string
 
+}
+
+export type Categories = {
+  /** File path relative to `contentDirPath` */
+  _id: string
+  _raw: Local.RawDocumentData
+  type: 'Categories'
+  title?: string | undefined
+
+}
+
+export type Tag = {
+  /** File path relative to `contentDirPath` */
+  _id: string
+  _raw: Local.RawDocumentData
+  type: 'Tag'
+  title?: string | undefined
+
 }  
 
 /** Helper types */
@@ -46,8 +65,8 @@ export type AllTypeNames = DocumentTypeNames | NestedTypeNames
 export type DocumentTypes = Article
 export type DocumentTypeNames = 'Article'
 
-export type NestedTypes = Author
-export type NestedTypeNames = 'Author'
+export type NestedTypes = Author | Categories | Tag
+export type NestedTypeNames = 'Author' | 'Categories' | 'Tag'
 
 
 export interface ContentlayerGenTypes {
@@ -70,6 +89,8 @@ export type DocumentTypeMap = {
 
 export type NestedTypeMap = {
   Author: Author
+  Categories: Categories
+  Tag: Tag
 }
 
  

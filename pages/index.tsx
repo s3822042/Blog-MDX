@@ -2,7 +2,13 @@ import Head from "next/head";
 import ArticleCard from "components/ArticleCard";
 import { allArticles } from "contentlayer/generated";
 import { select } from "utils/select";
+import SearchBar from "components/SearchBar";
+import { useState } from "react";
 export default function Home({ articles }: any) {
+  const [searchValue, setSearchValue] = useState("");
+  const filteredArticlePosts = articles.filter((article: any) =>
+    article.title.toLowerCase().includes(searchValue.toLowerCase())
+  );
   return (
     <div>
       <Head>
@@ -10,14 +16,19 @@ export default function Home({ articles }: any) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <div className="flex items-center justify-center">
+        <SearchBar changeHandler={(e: any) => setSearchValue(e.target.value)} />
+      </div>
+
       <main>
-        {articles.map(
+        {filteredArticlePosts.map(
           ({
             title,
             description,
             slug,
             image,
             category,
+            tags,
             publishedAt,
             readingTime,
           }: any) => (
@@ -28,6 +39,7 @@ export default function Home({ articles }: any) {
               slug={slug}
               image={image}
               category={category}
+              tags={tags}
               dateTime={publishedAt}
               date={publishedAt}
               readingTime={readingTime.text}
@@ -35,7 +47,6 @@ export default function Home({ articles }: any) {
           )
         )}
       </main>
-
     </div>
   );
 }
@@ -50,6 +61,7 @@ export function getStaticProps() {
         "publishedAt",
         "readingTime",
         "author",
+        "tags",
         "category",
         "image",
       ])

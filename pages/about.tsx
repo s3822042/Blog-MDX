@@ -25,7 +25,7 @@ const About = () => {
                       width: "192px",
                       height: "192px",
                     }}
-                    className="rounded-full"
+                    className="rounded-md"
                   />
                 </span>
                 <h3 className="pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight">
@@ -39,7 +39,7 @@ const About = () => {
                 </div>
                 <div className="flex pt-6 space-x-3">
                   <Link
-                    href="/"
+                    href="mailto:paulluanvothanh@gmail.com"
                     className="text-sm text-gray-500 transition hover:text-gray-600"
                   >
                     <span className="sr-only">mail</span>

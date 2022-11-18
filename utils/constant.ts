@@ -40,7 +40,8 @@ export const siteMetadata = {
   },
 };
 
-export const headerNavLinks = [
+export const headerNavLinks: { title: string; href: string }[] = [
   { href: "/category", title: "Category" },
+  { href: "/tags", title: "Tags" },
   { href: "/about", title: "About" },
 ];

@@ -1,7 +1,7 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { allArticles } from "contentlayer/generated";
 import { NextSeo } from "next-seo";
-import { SingleArticle } from "components";
+import SingleArticle from "components/SingleArticle";
 import Comments from "components/comments";
 import MDXComponents from "components/MDXComponents";
 
