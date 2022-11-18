@@ -8,7 +8,7 @@ const CustomLink = (props: any) => {
 
   if (isInternalLink) {
     return (
-      <Link href={href}>
+      <Link href={href} legacyBehavior>
         <a {...props}>{props.children}</a>
       </Link>
     );

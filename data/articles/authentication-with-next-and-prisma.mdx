@@ -8,6 +8,8 @@ author: { name: "Vo Thanh Luan", image: "https://imgur.com/wnuKAT5.jpg" }
 image: https://imgur.com/fnduee1.jpg'
 ---
 
+## Overview
+
 Building modern full-stack applications has gotten easier for frontend developers with new technologies and tools.With these, we can build frontend applications with server-side capabilities with frameworks like Next.js.We can also abstract the complex details of interfacing with a database using an ORM like Prisma.In this tutorial, we’ll learn how to build a full-stack application with authentication and CRUD functionality using Next.js, Prisma & MongoDB. We’ll explain these technologies and related concepts and see how we can put these technologies together to build an application.
 
 ## Prisma
@@ -102,12 +104,12 @@ export default prisma;
 We’ll be using Google provider for this project, and so we need to get our environment variables to configure our Google provider.
 
 1. Log into Google Cloud console
-2.Click on the dropdown which opens a modal; in the top right corner of the modal, click on **New Project**, to create a new project.
-3. Enter the project name and click create. Once the project is created, click on **SELECT PROJECT** in the notifications modal.
-4. Go to **APIs & Services > Credentials**.
-5. Configure the consent screen -> External user -> Add app information -> Create credentials
-6. Add an authorized Google URI for development - **http://localhost:3000/api/auth/callback/google**
-7. Click on Create, and after the client ID has been created, we will have our Client ID and Client Secret. Create a .env file to save these variables
+   2.Click on the dropdown which opens a modal; in the top right corner of the modal, click on **New Project**, to create a new project.
+2. Enter the project name and click create. Once the project is created, click on **SELECT PROJECT** in the notifications modal.
+3. Go to **APIs & Services > Credentials**.
+4. Configure the consent screen -> External user -> Add app information -> Create credentials
+5. Add an authorized Google URI for development - **http://localhost:3000/api/auth/callback/google**
+6. Click on Create, and after the client ID has been created, we will have our Client ID and Client Secret. Create a .env file to save these variables
 
 ```bash
 GOOGLE_CLIENT_ID=<client_ID_here>
@@ -166,14 +168,15 @@ export default MyApp;
 Instances of useSession will then have access to the session data and status. The component SessionProvider also keeps the session updated and synced between browser tabs and windows.
 
 **Quick note**: To display images from another domain using Next.js Image, we need to add it to a list of domains in our `./next.config.js` file
-```javascript
+
+```js
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['lh3.googleusercontent.com'],
+    domains: ["lh3.googleusercontent.com"],
   },
-}
-module.exports = nextConfig
+};
+module.exports = nextConfig;
 ```
 
 Now, you can make change to your prisma schema and to sync with the mongoDB database, simply run `npx prisma db push`

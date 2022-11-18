@@ -1,7 +1,8 @@
+// contentlayer.config.js
 import {
   defineDocumentType,
   defineNestedType,
-  makeSource,
+  makeSource
 } from "contentlayer/source-files";
 import readingTime from "reading-time";
 import rehypePrism from "rehype-prism-plus";
@@ -10,13 +11,14 @@ import rehypeCodeTitles from "rehype-code-titles";
 import remarkGfm from "remark-gfm";
 import rehypeStringify from "rehype-stringify";
 import rehypeToc from "@jsdevtools/rehype-toc";
-
-const customizeTOC = (toc) => {
+var customizeTOC = (toc) => {
   try {
     const { children } = toc;
     const childrenOfChildren = children?.[0]?.children;
-    if (!children?.length || !childrenOfChildren?.length) return null;
-  } catch (e) {}
+    if (!children?.length || !childrenOfChildren?.length)
+      return null;
+  } catch (e) {
+  }
   return {
     type: "element",
     tagName: "div",
@@ -29,36 +31,33 @@ const customizeTOC = (toc) => {
         children: [
           {
             type: "text",
-            value: "Table of Contents",
-          },
-        ],
+            value: "Table of Contents"
+          }
+        ]
       },
-      ...(toc.children || []),
-    ],
+      ...toc.children || []
+    ]
   };
 };
-
-const computedFields = {
+var computedFields = {
   readingTime: { type: "json", resolve: (doc) => readingTime(doc.body.raw) },
   wordCount: {
     type: "number",
-    resolve: (doc) => doc.body.raw.split(/\s+/gu).length,
+    resolve: (doc) => doc.body.raw.split(/\s+/gu).length
   },
   slug: {
     type: "string",
-    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ""),
-  },
+    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, "")
+  }
 };
-
-const Author = defineNestedType(() => ({
+var Author = defineNestedType(() => ({
   name: "Author",
   fields: {
     name: { type: "string", required: true },
-    image: { type: "string", required: true },
-  },
+    image: { type: "string", required: true }
+  }
 }));
-
-const Article = defineDocumentType(() => ({
+var Article = defineDocumentType(() => ({
   name: "Article",
   filePathPattern: "articles/*.mdx",
   contentType: "mdx",
@@ -70,14 +69,13 @@ const Article = defineDocumentType(() => ({
     category: { type: "string", required: true },
     author: {
       type: "nested",
-      of: Author,
+      of: Author
     },
-    image: { type: "string", required: true },
+    image: { type: "string", required: true }
   },
-  computedFields,
+  computedFields
 }));
-
-const contentLayerConfig = makeSource({
+var contentLayerConfig = makeSource({
   contentDirPath: "data",
   documentTypes: [Article],
   mdx: {
@@ -87,9 +85,12 @@ const contentLayerConfig = makeSource({
       rehypeSlug,
       rehypePrism,
       [rehypeToc, { customizeTOC }],
-      rehypeStringify,
-    ],
-  },
+      rehypeStringify
+    ]
+  }
 });
-
-export default contentLayerConfig;
+var contentlayer_config_default = contentLayerConfig;
+export {
+  contentlayer_config_default as default
+};
+//# sourceMappingURL=compiled-contentlayer-config-E5SFQWKA.mjs.map

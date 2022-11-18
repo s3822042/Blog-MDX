@@ -1,6 +1,6 @@
 import { writeFileSync } from "fs";
 import RSS from "rss";
-import { allArticles } from "../.contentlayer/generated";
+import { allArticles } from "../.contentlayer/generated/index.mjs";
 
 const feed = new RSS({
   title: "My Blogs",
@@ -13,7 +13,7 @@ allArticles
     title: article.title,
     description: article.description,
     url: `localhost:3000/articles/${article.slug}`,
-    date: blog.publishedAt,
+    date: article.publishedAt,
   }))
   .forEach((item) => {
     feed.item(item);
