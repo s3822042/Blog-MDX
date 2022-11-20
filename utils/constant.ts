@@ -41,7 +41,7 @@ export const siteMetadata = {
 };
 
 export const headerNavLinks: { title: string; href: string }[] = [
-  { href: "/category", title: "Category" },
-  { href: "/tags", title: "Tags" },
+  { href: "/categories", title: "Category" },
+  { href: "/tags", title: "Tag" },
   { href: "/about", title: "About" },
 ];

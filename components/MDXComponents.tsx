@@ -25,6 +25,7 @@ const MDXComponents = {
   Image: RoundedImage,
   a: CustomLink,
   pre: Pre,
+  h2: (props: any) => <h2 {...props} className="dark:text-white" />,
 };
 
 export default MDXComponents;

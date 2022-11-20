@@ -18,7 +18,7 @@ export default function Category({ articles, slug }: any) {
         </h1>
       </div>
 
-      <main>
+      <main className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {articles.map(
           ({
             title,

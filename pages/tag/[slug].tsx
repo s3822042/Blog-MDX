@@ -3,7 +3,6 @@ import { allArticles } from "contentlayer/generated";
 import { NextSeo } from "next-seo";
 import { siteMetadata } from "utils/constant";
 import { slugify } from "utils/helper";
-import kebabCase from "utils/kebabCase";
 
 export default function Tag({ articles, slug }: any) {
   // Capitalize first letter and convert space to dash
@@ -20,7 +19,7 @@ export default function Tag({ articles, slug }: any) {
         </h1>
       </div>
 
-      <main>
+      <main className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {articles.map(
           ({
             title,

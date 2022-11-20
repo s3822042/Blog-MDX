@@ -8,7 +8,7 @@ import ScrollTopAndComment from "components/ScrollTopAndComment";
 
 const LayoutWrapper = ({ children }: any) => {
   return (
-    <div className="flex flex-col justify-between h-screen">
+    <div className="flex flex-col h-screen px-4 mx-auto sm:px-6 xl:px-0">
       <ScrollTopAndComment />
       <header className="flex items-center justify-between px-4 py-10">
         <div>
@@ -43,7 +43,7 @@ const LayoutWrapper = ({ children }: any) => {
         </div>
       </header>
 
-      <main className="mb-auto">{children}</main>
+      <main className="grow">{children}</main>
       <Footer />
     </div>
   );

@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="w-full px-10 text-gray-500 dark:text-gray-400">
       <div className="flex flex-col items-center justify-between py-4 mx-auto max-w-7xl sm:flex-row">
         <div className="text-center">
-          <div className="">
+          <div>
             {`© ${new Date().getFullYear()}`}{" "}
             <span className="text-lg font-bold text-yellow-400">
               Vo Thanh Luan

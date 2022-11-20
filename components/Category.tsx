@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { slugify } from "utils/helper";
 
-const Tag = ({ text }: any) => {
+const Category = ({ text }: any) => {
+  const formattedText = slugify(text);
   return (
-    <Link href={`/tag/${text}`} legacyBehavior>
+    <Link href={`/category/${formattedText}`} legacyBehavior>
       <a className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
         {text.split(" ").join("-")}
       </a>
@@ -10,4 +12,4 @@ const Tag = ({ text }: any) => {
   );
 };
 
-export default Tag;
+export default Category;

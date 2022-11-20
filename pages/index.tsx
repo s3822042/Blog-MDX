@@ -12,7 +12,7 @@ export default function Home({ articles }: any) {
 
   console.log("articles", allArticles);
   return (
-    <div>
+    <div className="w-full">
       <Head>
         <title>Blog</title>
         <link rel="icon" href="/favicon.ico" />
@@ -22,7 +22,7 @@ export default function Home({ articles }: any) {
         <SearchBar changeHandler={(e: any) => setSearchValue(e.target.value)} />
       </div>
 
-      <main>
+      <main className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {filteredArticlePosts.map(
           ({
             title,
