@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { siteMetadata } from "utils/constant";
+import {siteMetadata} from "utils/constant";
 
 const About = () => {
   return (
@@ -95,22 +95,24 @@ const About = () => {
               </div>
               <div className="pt-8 pb-8 prose max-w-none dark:prose-dark xl:col-span-2">
                 <p>
-                  Vo Thanh Luan is a professor of atmospheric sciences at the
-                  Stanford AI Lab. His research interests includes complexity
-                  modelling of tailwinds, headwinds and crosswinds.
+                  Vo Thanh Luan is a highly skilled and knowledgeable individual with a strong background in computer
+                  science, particularly in the field of software engineering. With his bachelor's degree in this field,
+                  he has developed a deep understanding of how to design and build software systems that are robust,
+                  scalable, and efficient.
                 </p>
                 <p>
-                  He leads the clean energy group which develops 3D air
-                  pollution-climate models, writes differential equation
-                  solvers, and manufactures titanium plated air ballons. In his
-                  free time he bakes raspberry pi.
+                  One of the key areas of interest for Vo Thanh Luan is deep learning in natural language processing
+                  (NLP) and computer vision. He is constantly seeking out opportunities to learn more about these
+                  cutting-edge technologies, and is always looking for ways to apply them to real-world problems. He is
+                  particularly interested in the potential of deep learning to transform the way we interact with
+                  computers and other digital devices, and is always exploring new ways to harness the power of machine
+                  learning algorithms to improve the performance of these systems.
                 </p>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  neque elit, tristique placerat feugiat ac, facilisis vitae
-                  arcu. Proin eget egestas augue. Praesent ut sem nec arcu
-                  pellentesque aliquet. Duis dapibus diam vel metus tempus
-                  vulputate.
+                  Vo Thanh Luan is also interested in reinforcement learning, a type of machine learning that focuses on
+                  training algorithms to make decisions based on a reward system. He believes that this approach has
+                  great potential for a wide range of applications, from gaming to robotics, and is always looking for
+                  ways to apply these techniques to real-world problems.
                 </p>
               </div>
             </div>
