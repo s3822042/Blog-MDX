@@ -1,11 +1,11 @@
 {
-  "title": "What is React?",
+  "title": "What is Scikit-learn?",
   "publishedAt": "2022-11-18",
-  "description": "Everything you need to know about React",
+  "description": "Everything you need to know about Scikit-learn",
   "seoDescription": "This is the seoDescription for this markdown file.",
   "categories": [
     {
-      "title": "Software Engineer",
+      "title": "Data Analytics",
       "type": "Categories",
       "_raw": {}
     }
@@ -26,7 +26,7 @@
   "image": "https://imgur.com/fnduee1.jpg'",
   "body": {
     "raw": "",
-    "code": "var Component=(()=>{var g=Object.create;var i=Object.defineProperty;var h=Object.getOwnPropertyDescriptor;var p=Object.getOwnPropertyNames;var f=Object.getPrototypeOf,d=Object.prototype.hasOwnProperty;var l=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),x=(t,e)=>{for(var n in e)i(t,n,{get:e[n],enumerable:!0})},s=(t,e,n,a)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let r of p(e))!d.call(t,r)&&r!==n&&i(t,r,{get:()=>e[r],enumerable:!(a=h(e,r))||a.enumerable});return t};var j=(t,e,n)=>(n=t!=null?g(f(t)):{},s(e||!t||!t.__esModule?i(n,\"default\",{value:t,enumerable:!0}):n,t)),w=t=>s(i({},\"__esModule\",{value:!0}),t);var u=l((T,c)=>{c.exports=_jsx_runtime});var y={};x(y,{default:()=>b,frontmatter:()=>_});var o=j(u()),_={title:\"What is React?\",publishedAt:\"2022-11-18\",description:\"Everything you need to know about React\",categories:[{title:\"Software Engineer\"}],tags:[{title:\"react\"}],seoDescription:\"This is the seoDescription for this markdown file.\",author:{name:\"Vo Thanh Luan\",image:\"https://imgur.com/wnuKAT5.jpg\"},image:\"https://imgur.com/fnduee1.jpg'\"};function m(t){return(0,o.jsx)(o.Fragment,{})}function D(t={}){let{wrapper:e}=t.components||{};return e?(0,o.jsx)(e,Object.assign({},t,{children:(0,o.jsx)(m,t)})):m(t)}var b=D;return w(y);})();\n;return Component;"
+    "code": "var Component=(()=>{var g=Object.create;var r=Object.defineProperty;var h=Object.getOwnPropertyDescriptor;var p=Object.getOwnPropertyNames;var l=Object.getPrototypeOf,d=Object.prototype.hasOwnProperty;var f=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),x=(t,e)=>{for(var n in e)r(t,n,{get:e[n],enumerable:!0})},s=(t,e,n,a)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let o of p(e))!d.call(t,o)&&o!==n&&r(t,o,{get:()=>e[o],enumerable:!(a=h(e,o))||a.enumerable});return t};var j=(t,e,n)=>(n=t!=null?g(l(t)):{},s(e||!t||!t.__esModule?r(n,\"default\",{value:t,enumerable:!0}):n,t)),D=t=>s(r({},\"__esModule\",{value:!0}),t);var u=f((A,c)=>{c.exports=_jsx_runtime});var y={};x(y,{default:()=>w,frontmatter:()=>_});var i=j(u()),_={title:\"What is Scikit-learn?\",publishedAt:\"2022-11-18\",description:\"Everything you need to know about Scikit-learn\",categories:[{title:\"Data Analytics\"}],tags:[{title:\"react\"}],seoDescription:\"This is the seoDescription for this markdown file.\",author:{name:\"Vo Thanh Luan\",image:\"https://imgur.com/wnuKAT5.jpg\"},image:\"https://imgur.com/fnduee1.jpg'\"};function m(t){return(0,i.jsx)(i.Fragment,{})}function k(t={}){let{wrapper:e}=t.components||{};return e?(0,i.jsx)(e,Object.assign({},t,{children:(0,i.jsx)(m,t)})):m(t)}var w=k;return D(y);})();\n;return Component;"
   },
   "_id": "articles/what-is-react.mdx",
   "_raw": {
