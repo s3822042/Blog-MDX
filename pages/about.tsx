@@ -96,7 +96,7 @@ const About = () => {
               <div className="pt-8 pb-8 prose max-w-none dark:prose-dark xl:col-span-2">
                 <p>
                   Vo Thanh Luan is a highly skilled and knowledgeable individual with a strong background in computer
-                  science, particularly in the field of software engineering. With his bachelor's degree in this field,
+                  science, particularly in the field of software engineering. With his bachelor degree in this field,
                   he has developed a deep understanding of how to design and build software systems that are robust,
                   scalable, and efficient.
                 </p>
