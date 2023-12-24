@@ -24,9 +24,11 @@ export type Article = {
   image: string
   /** MDX file body */
   body: MDX
+  url: string
+  slug: string
+  publishedAt: string
   readingTime: json
   wordCount: number
-  slug: string
 }  
 
 /** Nested types */

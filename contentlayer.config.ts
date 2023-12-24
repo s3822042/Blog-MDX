@@ -4,15 +4,17 @@ import {
   defineNestedType,
   makeSource,
 } from "contentlayer/source-files";
+import { parseISO, format } from "date-fns";
 import readingTime from "reading-time";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeCodeTitles from "rehype-code-titles";
+import rehypePrettyCode from "rehype-pretty-code";
 import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
 
-const customizeTOC = (toc) => {
+const customizeTOC = (toc: any) => {
   try {
     const { children } = toc;
     const childrenOfChildren = children?.[0]?.children;
@@ -39,18 +41,6 @@ const customizeTOC = (toc) => {
   };
 };
 
-const computedFields = {
-  readingTime: { type: "json", resolve: (doc) => readingTime(doc.body.raw) },
-  wordCount: {
-    type: "number",
-    resolve: (doc) => doc.body.raw.split(/\s+/gu).length,
-  },
-  slug: {
-    type: "string",
-    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ""),
-  },
-};
-
 const Tag = defineNestedType(() => ({
   name: "Tag",
   fields: {
@@ -75,7 +65,7 @@ const Author = defineNestedType(() => ({
 
 const Article = defineDocumentType(() => ({
   name: "Article",
-  filePathPattern: "articles/*.mdx",
+  filePathPattern: "**/*.mdx",
   contentType: "mdx",
   fields: {
     id: { type: "number", required: true },
@@ -97,18 +87,59 @@ const Article = defineDocumentType(() => ({
     },
     image: { type: "string", required: true },
   },
-  computedFields,
+  computedFields: {
+    url: {
+      type: "string",
+      resolve: (article) => `/${article._raw.flattenedPath}`,
+    },
+    slug: {
+      type: "string",
+      resolve: (article) => article._raw.flattenedPath,
+    },
+    publishedAt: {
+      type: "string",
+      resolve: (article) =>
+        format(parseISO(article.publishedAt), "MMM dd, yyyy"),
+    },
+    readingTime: { type: "json", resolve: (doc) => readingTime(doc.body.raw) },
+    wordCount: {
+      type: "number",
+      resolve: (article) => article.body.raw.split(/\s+/gu).length,
+    },
+  },
 }));
 
-const contentLayerConfig = makeSource({
-  contentDirPath: "data",
+export default makeSource({
+  contentDirPath: "articles",
   documentTypes: [Article],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
       rehypeCodeTitles,
       rehypeSlug,
-      rehypePrism,
+      [
+        rehypePrettyCode,
+        {
+          theme: "one-dark-pro",
+          onVisitLine(node: { children: string | any[] }) {
+            if (node.children.length === 0) {
+              node.children = [{ type: "text", value: " " }];
+            }
+          },
+          onVisitHighlightLine(node: { properties: { className: string[] } }) {
+            node.properties.className.push("line--highlighted");
+          },
+          onVisitHighlightWord(node: { properties: { className: string[] } }) {
+            node.properties.className = ["word--highlighted"];
+          },
+        },
+      ],
+      [
+        rehypePrism,
+        {
+          showLineNumbers: true,
+        },
+      ],
       [rehypeToc, { customizeTOC }],
       rehypeStringify,
       [
@@ -122,5 +153,3 @@ const contentLayerConfig = makeSource({
     ],
   },
 });
-
-export default contentLayerConfig;

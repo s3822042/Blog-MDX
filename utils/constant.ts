@@ -9,6 +9,9 @@ export const siteMetadata = {
   linkedin: "https://www.linkedin.com/in/vo-thanh-luan/",
   facebook: "https://www.facebook.com/profile.php?id=100008659242682",
   twitter: "https://twitter.com/luanvothanh__",
+  icons: {
+    shortcut: "/favicon.ico",
+  },
 };
 
 export const headerNavLinks: { title: string; href: string }[] = [

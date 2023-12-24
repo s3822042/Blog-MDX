@@ -7,11 +7,27 @@ import SearchBar from "components/SearchBar";
 import { allArticles } from "contentlayer/generated";
 import { select } from "utils/select";
 
-export default function Home({ articles }: any) {
+export default function Home({ articles }: { articles: any[] }) {
   const [searchValue, setSearchValue] = useState("");
-  const filteredArticlePosts = articles.filter((article: any) =>
-    article.title.toLowerCase().includes(searchValue.toLowerCase()),
-  );
+
+  const filteredArticlePosts = articles
+    .filter((article) =>
+      article.title.toLowerCase().includes(searchValue.toLowerCase()),
+    )
+    .map((article) => (
+      <ArticleCard
+        key={article.slug}
+        title={article.title}
+        description={article.description}
+        slug={article.slug}
+        image={article.image}
+        tags={article.tags}
+        categories={article.categories}
+        dateTime={article.publishedAt}
+        date={article.publishedAt}
+        readingTime={article.readingTime.text}
+      />
+    ));
 
   return (
     <div className="w-full">
@@ -25,39 +41,15 @@ export default function Home({ articles }: any) {
       </div>
 
       <main className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {filteredArticlePosts.map(
-          ({
-            title,
-            description,
-            slug,
-            image,
-            categories,
-            tags,
-            publishedAt,
-            readingTime,
-          }: any) => (
-            <ArticleCard
-              key={slug}
-              title={title}
-              description={description}
-              slug={slug}
-              image={image}
-              tags={tags}
-              categories={categories}
-              dateTime={publishedAt}
-              date={publishedAt}
-              readingTime={readingTime.text}
-            />
-          ),
-        )}
+        {filteredArticlePosts}
       </main>
     </div>
   );
 }
 
-export function getStaticProps() {
+export async function getStaticProps() {
   const articles = allArticles
-    .map((article: any) =>
+    .map((article) =>
       select(article, [
         "slug",
         "title",
@@ -71,7 +63,7 @@ export function getStaticProps() {
       ]),
     )
     .sort(
-      (a: any, b: any) =>
+      (a, b) =>
         Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)),
     );
 

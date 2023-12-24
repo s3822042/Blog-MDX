@@ -1,38 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>localhost:3000/article/404</loc>
+    <loc>https://ciara-blog.netlify.app/article/404</loc>
   </url>
 
   <url>
-    <loc>localhost:3000/article/about</loc>
+    <loc>https://ciara-blog.netlify.app/article/about</loc>
   </url>
 
   <url>
-    <loc>localhost:3000/article/categories</loc>
+    <loc>https://ciara-blog.netlify.app/article/categories</loc>
   </url>
 
   <url>
-    <loc>localhost:3000/article/</loc>
+    <loc>https://ciara-blog.netlify.app/article/</loc>
   </url>
 
   <url>
-    <loc>localhost:3000/article/tags</loc>
+    <loc>https://ciara-blog.netlify.app/article/tags</loc>
   </url>
 
   <url>
-    <loc>localhost:3000/article/authentication-with-next-and-prisma</loc>
+    <loc
+      >https://ciara-blog.netlify.app/article/authentication-with-next-and-prisma</loc
+    >
   </url>
 
   <url>
-    <loc>localhost:3000/article/data-modelling-using-scikit-learn</loc>
+    <loc
+      >https://ciara-blog.netlify.app/article/data-modelling-using-scikit-learn</loc
+    >
   </url>
 
   <url>
-    <loc>localhost:3000/article/front-end-framework-choice-2023</loc>
+    <loc
+      >https://ciara-blog.netlify.app/article/front-end-framework-choice-2023</loc
+    >
   </url>
 
   <url>
-    <loc>localhost:3000/article/series-algorithm-valid-anagram</loc>
+    <loc>https://ciara-blog.netlify.app/article/series-algorithm-two-sum</loc>
+  </url>
+
+  <url>
+    <loc
+      >https://ciara-blog.netlify.app/article/series-algorithm-valid-anagram</loc
+    >
   </url>
 </urlset>

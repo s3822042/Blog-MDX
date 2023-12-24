@@ -5,7 +5,9 @@ import Link from "next/link";
 
 import { slugify } from "utils/helper";
 
-export default function ArticleCard({
+import ViewCounter from "../views/ViewCounter";
+
+const ArticleCard = ({
   title,
   description,
   slug,
@@ -14,7 +16,7 @@ export default function ArticleCard({
   dateTime,
   readingTime,
   tags,
-}: any) {
+}: any) => {
   const categoryTitle = slugify(categories[0].title);
 
   return (
@@ -71,6 +73,7 @@ export default function ArticleCard({
                 <path d="M12 5l7 7-7 7"></path>
               </svg>
             </a>
+
             <span className="ml-auto mr-3 inline-flex items-center border-r-2 border-gray-200 py-1 pr-3 text-sm leading-none text-gray-400 md:ml-0 lg:ml-auto">
               {readingTime}
             </span>
@@ -89,8 +92,11 @@ export default function ArticleCard({
               {dateTime}
             </span>
           </div>
+          <ViewCounter slug={slug} method={"GET"} />
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default ArticleCard;

@@ -3,13 +3,13 @@ import { globby } from "globby";
 import prettier from "prettier";
 
 const generateSitemap = async () => {
-  const pages = await globby(["pages/*.tsx", "data/**/*.mdx", "!pages/_*.tsx"]);
+  const pages = await globby(["pages/*.tsx", "articles/*.mdx", "!pages/_*.tsx"]);
 
   const urlTags = pages
     .map((file) =>
       file
         .replace("pages", "")
-        .replace("data/articles", "")
+        .replace("articles", "")
         .replace(".tsx", "")
         .replace(".mdx", "")
     )
@@ -17,7 +17,7 @@ const generateSitemap = async () => {
     .map(
       (path) => `
         <url>
-            <loc>localhost:3000/article${path}</loc>
+            <loc>https://ciara-blog.netlify.app/article${path}</loc>
         </url>
       `
     )

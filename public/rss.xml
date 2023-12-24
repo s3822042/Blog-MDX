@@ -2,30 +2,44 @@
     <channel>
         <title><![CDATA[My Blogs]]></title>
         <description><![CDATA[My Blogs]]></description>
-        <link>localhost:3000</link>
+        <link>https://ciara-blog.netlify.app/</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 24 Dec 2023 09:57:44 GMT</lastBuildDate>
-        <atom:link href="localhost:3000/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Sun, 24 Dec 2023 18:54:00 GMT</lastBuildDate>
+        <atom:link href="https://ciara-blog.netlify.app/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[Authentication and DB access with Next, Prisma]]></title>
             <description><![CDATA[How to connect your mongoDB with prisma and next.js]]></description>
-            <link>localhost:3000/articles/authentication-with-next-and-prisma</link>
-            <guid isPermaLink="true">localhost:3000/articles/authentication-with-next-and-prisma</guid>
-            <pubDate>Thu, 17 Nov 2022 00:00:00 GMT</pubDate>
+            <link>https://ciara-blog.netlify.app/articles/authentication-with-next-and-prisma</link>
+            <guid isPermaLink="true">https://ciara-blog.netlify.app/articles/authentication-with-next-and-prisma</guid>
+            <pubDate>Wed, 16 Nov 2022 17:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Data Modelling classification problem - Part 1]]></title>
             <description><![CDATA[How can you train the model in data analytics with three different machine learning algorithm]]></description>
-            <link>localhost:3000/articles/data-modelling-using-scikit-learn</link>
-            <guid isPermaLink="true">localhost:3000/articles/data-modelling-using-scikit-learn</guid>
-            <pubDate>Sat, 18 Mar 2023 00:00:00 GMT</pubDate>
+            <link>https://ciara-blog.netlify.app/articles/data-modelling-using-scikit-learn</link>
+            <guid isPermaLink="true">https://ciara-blog.netlify.app/articles/data-modelling-using-scikit-learn</guid>
+            <pubDate>Fri, 17 Mar 2023 17:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[What frontend framework should you choose in 2023 ?]]></title>
             <description><![CDATA[Choose front-end framework for your next application]]></description>
-            <link>localhost:3000/articles/front-end-framework-choice-2023</link>
-            <guid isPermaLink="true">localhost:3000/articles/front-end-framework-choice-2023</guid>
-            <pubDate>Sun, 20 Nov 2022 00:00:00 GMT</pubDate>
+            <link>https://ciara-blog.netlify.app/articles/front-end-framework-choice-2023</link>
+            <guid isPermaLink="true">https://ciara-blog.netlify.app/articles/front-end-framework-choice-2023</guid>
+            <pubDate>Sat, 19 Nov 2022 17:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Series Algorithm - Two Sum]]></title>
+            <description><![CDATA[Leetcode Question 1. Two Sum - Easy]]></description>
+            <link>https://ciara-blog.netlify.app/articles/series-algorithm-two-sum</link>
+            <guid isPermaLink="true">https://ciara-blog.netlify.app/articles/series-algorithm-two-sum</guid>
+            <pubDate>Sat, 23 Dec 2023 17:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Series Algorithm - Valid Anagram]]></title>
+            <description><![CDATA[Leetcode Question 242. Valid Anagram - Easy]]></description>
+            <link>https://ciara-blog.netlify.app/articles/series-algorithm-valid-anagram</link>
+            <guid isPermaLink="true">https://ciara-blog.netlify.app/articles/series-algorithm-valid-anagram</guid>
+            <pubDate>Sat, 23 Dec 2023 17:00:00 GMT</pubDate>
         </item>
     </channel>
 </rss>

@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
 
+import useSWR from "swr";
+
+import fetcher from "utils/helper";
+
 const Comment: React.FC<CommentProps> = ({ postId }) => {
-  const [comments, setComments] = useState<Comment[]>([]);
   const [newComment, setNewComment] = useState("");
   const [userName, setUserName] = useState("");
 
-  const fetchComments = async () => {
-    try {
-      const response = await fetch(`/api/comments/list?postId=${postId}`);
-      const data = await response.json();
-      setComments(data);
-    } catch (error) {
-      console.error("Error fetching comments:", error);
-    }
-  };
+  const { data: comments, mutate } = useSWR<Comment[]>(
+    `/api/comments/list?postId=${postId}`,
+    fetcher,
+  );
 
   const handleCommentSubmit = async () => {
     try {
@@ -25,26 +23,22 @@ const Comment: React.FC<CommentProps> = ({ postId }) => {
         body: JSON.stringify({ content: newComment, postId, userName }),
       });
 
-      const data = await response.json();
-
-      setComments((prevComments) => {
-        const sortedComments = [...prevComments, data].sort(
-          (a, b) =>
-            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-        );
-
-        return sortedComments;
-      });
-
-      setNewComment("");
-      setUserName("");
+      if (response.ok) {
+        // Trigger a re-fetch of comments after submitting a new comment
+        await mutate();
+        setNewComment("");
+        setUserName("");
+      } else {
+        console.error("Error submitting comment:", response.statusText);
+      }
     } catch (error) {
       console.error("Error submitting comment:", error);
     }
   };
 
   useEffect(() => {
-    fetchComments();
+    // Fetch comments when the postId changes
+    mutate();
   }, [postId]);
 
   return (
@@ -81,14 +75,13 @@ const Comment: React.FC<CommentProps> = ({ postId }) => {
       </button>
       <div className="mt-6">
         <h3 className="mb-4 text-xl font-semibold">Comments</h3>
-        {comments.length === 0 ? (
+        {comments?.length === 0 ? (
           <p className="text-gray-500 dark:text-white">No comments yet.</p>
         ) : (
-          comments.map((comment) => (
+          comments?.map((comment) => (
             <div key={comment.id} className="mb-4">
               <p className="text-gray-800 dark:text-white">
-                {comment.userName ? comment.userName : "Anonymous User"}:{" "}
-                {comment.content}
+                {comment.userName}: {comment.content}
               </p>
               <p className="text-sm text-gray-500 dark:text-white">
                 {new Date(comment.createdAt).toLocaleString()}

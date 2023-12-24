@@ -3,9 +3,10 @@ import { NextSeo } from "next-seo";
 
 import SingleArticle from "components/articles/SingleArticle";
 import MDXComponents from "components/layout/MDXComponents";
+import ViewCounter from "components/views/ViewCounter";
 import { allArticles } from "contentlayer/generated";
 
-const SinglePost = ({ article }: any) => {
+export default function SinglePost({ article }: any) {
   const MDXContent = useMDXComponent(article.body.code);
 
   return (
@@ -19,13 +20,12 @@ const SinglePost = ({ article }: any) => {
         categories={article.categories}
         author={article.author}
       >
+        <ViewCounter slug={article.slug} method={"POST"} />
         <MDXContent components={{ ...MDXComponents } as any} />
       </SingleArticle>
     </>
   );
-};
-
-export default SinglePost;
+}
 
 export async function getStaticPaths() {
   return {

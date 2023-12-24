@@ -4,15 +4,15 @@ import { allArticles } from "../.contentlayer/generated/index.mjs";
 
 const feed = new RSS({
   title: "My Blogs",
-  feed_url: "localhost:3000/rss.xml",
-  site_url: "localhost:3000",
+  feed_url: "https://ciara-blog.netlify.app/rss.xml",
+  site_url: "https://ciara-blog.netlify.app/",
 });
 
 allArticles
   .map((article) => ({
     title: article.title,
     description: article.description,
-    url: `localhost:3000/articles/${article.slug}`,
+    url: `https://ciara-blog.netlify.app/articles/${article.slug}`,
     date: article.publishedAt,
   }))
   .forEach((item) => {
