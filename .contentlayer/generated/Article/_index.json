@@ -234,5 +234,54 @@
     },
     "wordCount": 1461,
     "slug": "series-algorithm-valid-anagram"
+  },
+  {
+    "id": 5,
+    "title": "Series Algorithm - Two Sum",
+    "publishedAt": "2023-12-24",
+    "description": "Leetcode Question 1. Two Sum - Easy",
+    "seoDescription": "This is the seoDescription for this markdown file.",
+    "categories": [
+      {
+        "title": "Software Engineer",
+        "type": "Categories",
+        "_raw": {}
+      }
+    ],
+    "tags": [
+      {
+        "title": "algorithm",
+        "type": "Tag",
+        "_raw": {}
+      }
+    ],
+    "author": {
+      "name": "Vo Thanh Luan",
+      "image": "https://imgur.com/wnuKAT5.jpg",
+      "type": "Author",
+      "_raw": {}
+    },
+    "image": "https://i.imgur.com/jp7dHTq.jpg'",
+    "body": {
+      "raw": "",
+      "code": "var Component=(()=>{var g=Object.create;var r=Object.defineProperty;var h=Object.getOwnPropertyDescriptor;var p=Object.getOwnPropertyNames;var d=Object.getPrototypeOf,l=Object.prototype.hasOwnProperty;var f=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),j=(t,e)=>{for(var i in e)r(t,i,{get:e[i],enumerable:!0})},a=(t,e,i,s)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let n of p(e))!l.call(t,n)&&n!==i&&r(t,n,{get:()=>e[n],enumerable:!(s=h(e,n))||s.enumerable});return t};var x=(t,e,i)=>(i=t!=null?g(d(t)):{},a(e||!t||!t.__esModule?r(i,\"default\",{value:t,enumerable:!0}):i,t)),w=t=>a(r({},\"__esModule\",{value:!0}),t);var u=f((L,m)=>{m.exports=_jsx_runtime});var S={};j(S,{default:()=>D,frontmatter:()=>T});var o=x(u()),T={id:5,title:\"Series Algorithm - Two Sum\",publishedAt:\"2023-12-24\",description:\"Leetcode Question 1. Two Sum - Easy\",categories:[{title:\"Software Engineer\"}],tags:[{title:\"algorithm\"}],seoDescription:\"This is the seoDescription for this markdown file.\",author:{name:\"Vo Thanh Luan\",image:\"https://imgur.com/wnuKAT5.jpg\"},image:\"https://i.imgur.com/jp7dHTq.jpg'\"};function c(t){return(0,o.jsx)(o.Fragment,{})}function _(t={}){let{wrapper:e}=t.components||{};return e?(0,o.jsx)(e,Object.assign({},t,{children:(0,o.jsx)(c,t)})):c(t)}var D=_;return w(S);})();\n;return Component;"
+    },
+    "_id": "articles/series-algorithm-two-sum.mdx",
+    "_raw": {
+      "sourceFilePath": "articles/series-algorithm-two-sum.mdx",
+      "sourceFileName": "series-algorithm-two-sum.mdx",
+      "sourceFileDir": "articles",
+      "contentType": "mdx",
+      "flattenedPath": "articles/series-algorithm-two-sum"
+    },
+    "type": "Article",
+    "readingTime": {
+      "text": "0 min read",
+      "minutes": 0,
+      "time": 0,
+      "words": 0
+    },
+    "wordCount": 1,
+    "slug": "series-algorithm-two-sum"
   }
 ]
