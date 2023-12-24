@@ -9,7 +9,6 @@ export default function SingleArticle({
   title,
   children,
 }: any) {
-  console.log(id);
   return (
     <div className="px-4 py-24">
       <div className="mx-auto max-w-[60%]">
