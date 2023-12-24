@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import { slugify } from "utils/helper";
 
 const Category = ({ text }: any) => {

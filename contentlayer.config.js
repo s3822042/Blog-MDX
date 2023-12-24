@@ -1,16 +1,16 @@
+import rehypeToc from "@jsdevtools/rehype-toc";
 import {
   defineDocumentType,
   defineNestedType,
   makeSource,
 } from "contentlayer/source-files";
 import readingTime from "reading-time";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeCodeTitles from "rehype-code-titles";
 import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
-import rehypeCodeTitles from "rehype-code-titles";
-import remarkGfm from "remark-gfm";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeStringify from "rehype-stringify";
-import rehypeToc from "@jsdevtools/rehype-toc";
+import remarkGfm from "remark-gfm";
 
 const customizeTOC = (toc) => {
   try {

@@ -4,14 +4,28 @@
         <description><![CDATA[My Blogs]]></description>
         <link>localhost:3000</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 18 Nov 2022 06:45:12 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 24 Dec 2023 09:57:44 GMT</lastBuildDate>
         <atom:link href="localhost:3000/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[Authentication and DB access with Next, Prisma]]></title>
-            <description><![CDATA[A sample description of this application.]]></description>
+            <description><![CDATA[How to connect your mongoDB with prisma and next.js]]></description>
             <link>localhost:3000/articles/authentication-with-next-and-prisma</link>
             <guid isPermaLink="true">localhost:3000/articles/authentication-with-next-and-prisma</guid>
             <pubDate>Thu, 17 Nov 2022 00:00:00 GMT</pubDate>
         </item>
+        <item>
+            <title><![CDATA[Data Modelling classification problem - Part 1]]></title>
+            <description><![CDATA[How can you train the model in data analytics with three different machine learning algorithm]]></description>
+            <link>localhost:3000/articles/data-modelling-using-scikit-learn</link>
+            <guid isPermaLink="true">localhost:3000/articles/data-modelling-using-scikit-learn</guid>
+            <pubDate>Sat, 18 Mar 2023 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[What frontend framework should you choose in 2023 ?]]></title>
+            <description><![CDATA[Choose front-end framework for your next application]]></description>
+            <link>localhost:3000/articles/front-end-framework-choice-2023</link>
+            <guid isPermaLink="true">localhost:3000/articles/front-end-framework-choice-2023</guid>
+            <pubDate>Sun, 20 Nov 2022 00:00:00 GMT</pubDate>
+        </item>
     </channel>
-</rss>k
+</rss>

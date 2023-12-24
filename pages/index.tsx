@@ -1,16 +1,18 @@
+import { useState } from "react";
+
 import Head from "next/head";
-import ArticleCard from "components/ArticleCard";
+
+import ArticleCard from "components/articles/ArticleCard";
+import SearchBar from "components/SearchBar";
 import { allArticles } from "contentlayer/generated";
 import { select } from "utils/select";
-import SearchBar from "components/SearchBar";
-import { useState } from "react";
+
 export default function Home({ articles }: any) {
   const [searchValue, setSearchValue] = useState("");
   const filteredArticlePosts = articles.filter((article: any) =>
-    article.title.toLowerCase().includes(searchValue.toLowerCase())
+    article.title.toLowerCase().includes(searchValue.toLowerCase()),
   );
 
-  console.log("articles", allArticles);
   return (
     <div className="w-full">
       <Head>
@@ -46,7 +48,7 @@ export default function Home({ articles }: any) {
               date={publishedAt}
               readingTime={readingTime.text}
             />
-          )
+          ),
         )}
       </main>
     </div>
@@ -66,11 +68,11 @@ export function getStaticProps() {
         "tags",
         "categories",
         "image",
-      ])
+      ]),
     )
     .sort(
       (a: any, b: any) =>
-        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
+        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)),
     );
 
   return { props: { articles } };

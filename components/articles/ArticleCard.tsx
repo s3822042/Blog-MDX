@@ -1,7 +1,9 @@
 import React from "react";
+
 import Image from "next/image";
-import { slugify } from "utils/helper";
 import Link from "next/link";
+
+import { slugify } from "utils/helper";
 
 export default function ArticleCard({
   title,
@@ -16,10 +18,10 @@ export default function ArticleCard({
   const categoryTitle = slugify(categories[0].title);
 
   return (
-    <div className="container grid px-5 py-6 mx-auto text-gray-600 body-font lg:py-12">
-      <div className="h-full overflow-hidden border-2 border-gray-200 rounded-lg border-opacity-60">
+    <div className="container mx-auto grid px-5 pb-3 pt-6 text-gray-600 lg:pb-6 lg:pt-12">
+      <div className="h-full overflow-hidden rounded-lg border-2 border-gray-200 border-opacity-60">
         <Image
-          className="object-cover object-center w-full lg:h-48 md:h-36"
+          className="w-full object-cover object-center md:h-36 lg:h-48"
           src={image}
           width={720}
           height={400}
@@ -27,15 +29,15 @@ export default function ArticleCard({
         />
         <div className="p-6">
           <Link href={`/category/${categoryTitle}`}>
-            <h2 className="mb-1 text-xs font-medium tracking-widest text-gray-400 title-font">
+            <h2 className="mb-1 text-xs font-medium tracking-widest text-gray-400">
               {categories[0].title}
             </h2>
           </Link>
 
-          <h1 className="mb-3 text-lg font-medium text-gray-900 title-font dark:text-white">
+          <h1 className="mb-3 text-lg font-medium text-gray-900 dark:text-white">
             {title}
           </h1>
-          <p className="mb-3 leading-relaxed ">{description}</p>
+          <p className="mb-3 line-clamp-2 leading-relaxed">{description}</p>
           <div className="mb-3">
             {tags.map((tag: any) => {
               const tagTitle = slugify(tag.title);
@@ -57,7 +59,7 @@ export default function ArticleCard({
             >
               Read More
               <svg
-                className="w-4 h-4 ml-2"
+                className="ml-2 h-4 w-4"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
                 strokeWidth="2"
@@ -69,12 +71,12 @@ export default function ArticleCard({
                 <path d="M12 5l7 7-7 7"></path>
               </svg>
             </a>
-            <span className="inline-flex items-center py-1 pr-3 ml-auto mr-3 text-sm leading-none text-gray-400 border-r-2 border-gray-200 lg:ml-auto md:ml-0">
+            <span className="ml-auto mr-3 inline-flex items-center border-r-2 border-gray-200 py-1 pr-3 text-sm leading-none text-gray-400 md:ml-0 lg:ml-auto">
               {readingTime}
             </span>
             <span className="inline-flex items-center text-sm leading-none text-gray-400">
               <svg
-                className="w-4 h-4 mr-1"
+                className="mr-1 h-4 w-4"
                 stroke="currentColor"
                 strokeWidth="2"
                 fill="none"

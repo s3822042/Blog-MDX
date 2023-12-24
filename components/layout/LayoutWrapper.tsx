@@ -1,14 +1,16 @@
 import React from "react";
-import Footer from "./Footer";
-import ThemeSwitch from "./ThemeSwitch";
+
 import Link from "next/link";
-import MobileNav from "./MobileNav";
-import { siteMetadata, headerNavLinks } from "utils/constant";
+
+import Footer from "components/navigation/Footer";
+import MobileNav from "components/navigation/MobileNav";
 import ScrollTopAndComment from "components/ScrollTopAndComment";
+import ThemeSwitch from "components/ThemeSwitch";
+import { siteMetadata, headerNavLinks } from "utils/constant";
 
 const LayoutWrapper = ({ children }: any) => {
   return (
-    <div className="flex flex-col h-screen px-4 mx-auto sm:px-6 xl:px-0">
+    <div className="mx-auto flex h-screen flex-col px-4 sm:px-6 xl:px-0">
       <ScrollTopAndComment />
       <header className="flex items-center justify-between px-4 py-10">
         <div>
@@ -31,7 +33,7 @@ const LayoutWrapper = ({ children }: any) => {
               <Link
                 key={link.title}
                 href={link.href}
-                className="p-1 font-medium text-gray-900 dark:text-gray-400 sm:p-4"
+                className="p-1 font-medium text-gray-900 sm:p-4 dark:text-gray-400"
               >
                 {link.title}
               </Link>

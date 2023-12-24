@@ -1,9 +1,9 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
-import { allArticles } from "contentlayer/generated";
 import { NextSeo } from "next-seo";
-import SingleArticle from "components/SingleArticle";
-import Comments from "components/comments";
-import MDXComponents from "components/MDXComponents";
+
+import SingleArticle from "components/articles/SingleArticle";
+import MDXComponents from "components/layout/MDXComponents";
+import { allArticles } from "contentlayer/generated";
 
 const SinglePost = ({ article }: any) => {
   const MDXContent = useMDXComponent(article.body.code);
@@ -19,7 +19,6 @@ const SinglePost = ({ article }: any) => {
         author={article.author}
       >
         <MDXContent components={{ ...MDXComponents } as any} />
-        <Comments frontMatter={article} />
       </SingleArticle>
     </>
   );

@@ -1,6 +1,7 @@
-import ArticleCard from "components/ArticleCard";
-import { allArticles } from "contentlayer/generated";
 import { NextSeo } from "next-seo";
+
+import ArticleCard from "components/articles/ArticleCard";
+import { allArticles } from "contentlayer/generated";
 import { siteMetadata } from "utils/constant";
 import { slugify } from "utils/helper";
 
@@ -13,7 +14,7 @@ export default function Category({ articles, slug }: any) {
         description={`${slug} tags - ${siteMetadata.author}`}
       />
       <div className="flex justify-center text-3xl">
-        <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+        <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 dark:text-gray-100">
           Category: {title} ({articles.length}){" "}
         </h1>
       </div>
@@ -42,7 +43,7 @@ export default function Category({ articles, slug }: any) {
               date={publishedAt}
               readingTime={readingTime.text}
             />
-          )
+          ),
         )}
       </main>
     </>

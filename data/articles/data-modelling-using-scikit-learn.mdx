@@ -14,6 +14,7 @@ image: https://i.imgur.com/uAurwRT.png'
 ---
 
 ## Introduction
+
 In the field of machine learning, classification is a widely used technique that involves categorizing data into predefined classes or categories. This technique is commonly used in various applications such as image recognition, spam filtering, fraud detection, and sentiment analysis.
 
 In a classification problem, the machine learning algorithm is trained to predict the class or category of a given input based on its features. For instance, a spam filtering algorithm might classify an email as spam or not spam based on the presence or absence of certain keywords.
@@ -23,37 +24,43 @@ However, before we can start building a classification model, we need to first i
 Whether you are a beginner or an experienced data scientist, this blog will provide you with a solid understanding of classification problems and equip you with the skills to detect and solve them effectively. So, let's dive in!
 
 ## Problem statement
+
 For this tutorial, I will be using the dataset from The Johns Hopkins University which the target is to predict the likelihood of sepsis in ICU patients.
 
 This dataset will be as following table
-| Column   Name                | Attribute/Target | Description                                                                                                                                                                                                  |
+| Column Name | Attribute/Target | Description |
 |------------------------------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ID                           | N/A              | Unique number to represent patient ID                                                                                                                                                                        |
-| PRG           | Attribute1       |  Plasma glucose
+| ID | N/A | Unique number to represent patient ID |
+| PRG | Attribute1 | Plasma glucose
 |
-| PL               | Attribute 2     |   Blood Work Result-1 (mu U/ml)                                                                                                                                                |
-| PR              | Attribute 3      | Blood Pressure (mm Hg)
+| PL | Attribute 2 | Blood Work Result-1 (mu U/ml) |
+| PR | Attribute 3 | Blood Pressure (mm Hg)
 |
-| SK              | Attribute 4      | Blood Work Result-2 (mm)
+| SK | Attribute 4 | Blood Work Result-2 (mm)
 |
-| TS             | Attribute 5      |     Blood Work Result-3 (mu U/ml)
+| TS | Attribute 5 | Blood Work Result-3 (mu U/ml)
 |
-| M11     | Attribute 6    |  Body mass index (weight in kg/(height in m)^2
+| M11 | Attribute 6 | Body mass index (weight in kg/(height in m)^2
 |
-| BD2             | Attribute 7     |   Blood Work Result-4 (mu U/ml)                                                                                                                                               |
-| Age              | Attribute 8      |    patients age  (years)                                                                                                                                             |
-| Insurance | N/A     | If a patient holds a valid insurance card
+| BD2 | Attribute 7 | Blood Work Result-4 (mu U/ml) |
+| Age | Attribute 8 | patients age (years) |
+| Insurance | N/A | If a patient holds a valid insurance card
 |
-| Sepssis                 | Target           | Positive: if a patient in ICU will develop a sepsis , and Negative: otherwise |
+| Sepssis | Target | Positive: if a patient in ICU will develop a sepsis , and Negative: otherwise |
 
 The target column that I will predict is the Sepssis which has two possible value: Positive if the patient will develop a sepsis, and Negative if they will not have sepssis
 
 First thing first, we need to load the data then do some Exploratory Data Analysis (EDA), if you are not familiar with EDA, here is some definition of its:
 
-- <b>Exploratory Data Analysis (EDA) </b> is the process of examining and analyzing data to extract insights, identify patterns, and understand the underlying structure of the data. EDA is typically the first step in any data analysis process and is performed before building predictive models or making any inferences from the data.
+- <b>Exploratory Data Analysis (EDA) </b> is the process of examining and analyzing
+  data to extract insights, identify patterns, and understand the underlying structure
+  of the data. EDA is typically the first step in any data analysis process and is
+  performed before building predictive models or making any inferences from the data.
 
 The reason why we need to do EDA is to gain a deeper understanding of the data and its properties, which can help identify any issues or anomalies that may be present in the data. EDA can also help identify the relationship between the different variables and the target variable and can help in feature selection for predictive modeling.
+
 ## Data retrieving
+
 At the first step, we will need to load the data, in this case, the data will be in .csv format
 
 ```python
@@ -65,6 +72,7 @@ test_df = pd.read_csv("Paitients_Files_Test.csv")
 ```
 
 However, we will need to install some necessary packages first, then let install and import them in the notebook
+
 ```python
 # pip3 install matplotlib pandas seaborn scikit_learn numpy
 ```
@@ -86,6 +94,7 @@ from sklearn.metrics import *
 ```
 
 Let through of them and see how can they be used in this notebook
+
 - os: Used to interact with the operating system, such as setting working directories or listing files in a directory.
 
 - pandas: Used to work with data frames, which are a table-like data structure in Python. Pandas provides tools for data manipulation, cleaning, and analysis.
@@ -117,24 +126,27 @@ Let through of them and see how can they be used in this notebook
 - metrics: A module from scikit-learn containing various metrics used to evaluate model performance, such as accuracy, precision, recall, and F1 score.
 
 Then, let see the dataframe of each dataset
+
 ```python
 # view first 5 rows of train dataframe
 train_df.head()
 ```
-| Index | ID        | PRG | PL  | PR  | SK  | TS  | M11  | BD2   | Age | Insurance | Sepssis  |
-|-------|-----------|-----|-----|-----|-----|-----|------|-------|-----|-----------|----------|
-| 0     | ICU200010 | 6   | 148 | 72  | 35  | 0   | 33.6 | 0.627 | 50  | 0         | Positive |
-| 1     | ICU200011 | 1   | 85  | 66  | 29  | 0   | 26.6 | 0.351 | 31  | 0         | Negative |
-| 2     | ICU200012 | 8   | 183 | 64  | 0   | 0   | 23.3 | 0.672 | 32  | 1         | Positive |
-| 3     | ICU200013 | 1   | 89  | 66  | 23  | 94  | 28.1 | 0.167 | 21  | 1         | Negative |
-| 4     | ICU200014 | 0   | 137 | 40  | 35  | 168 | 43.1 | 2.288 | 33  | 1         | Positive |
+
+| Index | ID        | PRG | PL  | PR | SK | TS  | M11  | BD2   | Age | Insurance | Sepssis  |
+|-------|-----------|-----|-----|----|----|-----|------|-------|-----|-----------|----------|
+| 0     | ICU200010 | 6   | 148 | 72 | 35 | 0   | 33.6 | 0.627 | 50  | 0         | Positive |
+| 1     | ICU200011 | 1   | 85  | 66 | 29 | 0   | 26.6 | 0.351 | 31  | 0         | Negative |
+| 2     | ICU200012 | 8   | 183 | 64 | 0  | 0   | 23.3 | 0.672 | 32  | 1         | Positive |
+| 3     | ICU200013 | 1   | 89  | 66 | 23 | 94  | 28.1 | 0.167 | 21  | 1         | Negative |
+| 4     | ICU200014 | 0   | 137 | 40 | 35 | 168 | 43.1 | 2.288 | 33  | 1         | Positive |
 
 ```python
 # view first 5 rows of test dataframe
 test_df.head()
 ```
+
 | Index | ID        | PRG | PL  | PR  | SK  | TS  | M11  | BD2   | Age | Insurance |
-|-------|-----------|-----|-----|-----|-----|-----|------|-------|-----|-----------|
+| ----- | --------- | --- | --- | --- | --- | --- | ---- | ----- | --- | --------- |
 | 0     | ICU200609 | 1   | 109 | 38  | 18  | 120 | 23.1 | 0.407 | 26  | 1         |
 | 1     | ICU200610 | 1   | 108 | 88  | 19  | 0   | 27.1 | 0.400 | 24  | 1         |
 | 2     | ICU200611 | 6   | 96  | 0   | 0   | 0   | 23.7 | 0.190 | 28  | 1         |
@@ -142,13 +154,14 @@ test_df.head()
 | 4     | ICU200613 | 7   | 150 | 78  | 29  | 126 | 35.2 | 0.692 | 54  | 0         |
 
 The test_df which will be used to evaluate the performance of the model we trained. Since we want to predict the "Sepssis" column using the other input variables, we do not see this column in the test_df. Instead, we use the input variables in test_df to make predictions for the "Sepssis" column, and then compare these predictions to the actual values in the testing set to evaluate the accuracy of our model.
+
 ```python
 # check the training dataset columns and their datatypes
 train_df.info()
 ```
 
 | #   | Column    | Non-Null Count | Dtype   |
-|-----|-----------|----------------|---------|
+| --- | --------- | -------------- | ------- |
 | 0   | ID        | 169 non-null   | object  |
 | 1   | PRG       | 169 non-null   | int64   |
 | 2   | PL        | 169 non-null   | int64   |
@@ -164,17 +177,18 @@ train_df.info()
 # check the testing dataset columns and their datatypes
 test_df.info()
 ```
-| #   | Column    | Non-Null Count | Dtype   |
-|-----|-----------|----------------|---------|
-| 0   | ID        | 169 non-null   | object  |
-| 1   | PRG       | 169 non-null   | int64   |
-| 2   | PL        | 169 non-null   | int64   |
-| 3   | PR        | 169 non-null   | int64   |
-| 4   | SK        | 169 non-null   | int64   |
-| 5   | TS        | 169 non-null   | int64   |
-| 6   | M11       | 169 non-null   | float64 |
-| 7   | BD2       | 169 non-null   | float64 |
-| 8   | Age       | 169 non-null   | int64   |
+
+| #   | Column | Non-Null Count | Dtype   |
+| --- | ------ | -------------- | ------- |
+| 0   | ID     | 169 non-null   | object  |
+| 1   | PRG    | 169 non-null   | int64   |
+| 2   | PL     | 169 non-null   | int64   |
+| 3   | PR     | 169 non-null   | int64   |
+| 4   | SK     | 169 non-null   | int64   |
+| 5   | TS     | 169 non-null   | int64   |
+| 6   | M11    | 169 non-null   | float64 |
+| 7   | BD2    | 169 non-null   | float64 |
+| 8   | Age    | 169 non-null   | int64   |
 
 As we can see, there are no columns in either the training or testing dataset that have missing values, which means we won't need to deal with any null values during data cleaning.
 
@@ -187,7 +201,7 @@ train_df.describe().T
 ```
 
 |           | count | mean       | std        | min    | 25%    | 50%     | 75%     | max    |
-|-----------|-------|------------|------------|--------|--------|---------|---------|--------|
+| --------- | ----- | ---------- | ---------- | ------ | ------ | ------- | ------- | ------ |
 | PRG       | 599.0 | 3.824708   | 3.362839   | 0.000  | 1.000  | 3.000   | 6.000   | 17.00  |
 | PL        | 599.0 | 120.153589 | 32.682364  | 0.000  | 99.000 | 116.000 | 140.000 | 198.00 |
 | PR        | 599.0 | 68.732888  | 19.335675  | 0.000  | 64.000 | 70.000  | 80.000  | 122.00 |
@@ -204,9 +218,9 @@ Based on the summary of statistics provided, we can draw some conclusions about 
 - Most columns, the average and median values are similar, suggesting that their distribution is similar to that of a normal distribution.
 - The Insurance columns contains nominal data and other columns contain either discrete or continuous data.
 - Blood Work Result-3 (TS) has a mean of 79.46 and a large standard deviation of 116.58. This attribute has a positively skewed distribution toward
-higher number, with most patients having low results and a few patients having very high results.
+  higher number, with most patients having low results and a few patients having very high results.
 - The patient ages range from 21 to 81 years, with a mean age of 33.29 and a standard deviation of 11.83. This indicates that the patient population is
-relatively young, with most patients being in their 20s or 30s.
+  relatively young, with most patients being in their 20s or 30s.
 - Most patients (68.6%) hold a valid insurance card, as indicated by the Insurance column.
 
 ```python
@@ -214,6 +228,7 @@ relatively young, with most patients being in their 20s or 30s.
 train_df.hist(figsize=(20, 10))
 plt.show()
 ```
+
 ![Distribution value](https://i.imgur.com/9rFohn3.png)
 
 The graph above confirms some observations made earlier about the distribution of the variables in the dataset. For instance, the histograms for the PL, PR,
@@ -233,4 +248,3 @@ In part 1 of this series, we focused on retrieving the dataset and importing the
 It is essential to note that while data retrieval is a crucial part of the machine learning workflow, it is only the beginning. The next steps are data cleaning and exploratory data analysis, which are crucial in preparing the dataset for machine learning.
 
 Data cleaning is a process of identifying and addressing issues in the data that could affect the accuracy of the model. These issues include missing values, outliers, duplicates, and inconsistent data. In part 2 of this series, we will focus on data cleaning by identifying and addressing these issues.
-

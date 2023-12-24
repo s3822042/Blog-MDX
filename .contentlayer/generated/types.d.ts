@@ -68,6 +68,11 @@ export type DocumentTypeNames = 'Article'
 export type NestedTypes = Author | Categories | Tag
 export type NestedTypeNames = 'Author' | 'Categories' | 'Tag'
 
+export type DataExports = {
+  allDocuments: DocumentTypes[]
+  allArticles: Article[]
+}
+
 
 export interface ContentlayerGenTypes {
   documentTypes: DocumentTypes
@@ -77,6 +82,7 @@ export interface ContentlayerGenTypes {
   nestedTypeMap: NestedTypeMap
   nestedTypeNames: NestedTypeNames
   allTypeNames: AllTypeNames
+  dataExports: DataExports
 }
 
 declare global {
