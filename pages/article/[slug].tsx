@@ -14,6 +14,7 @@ const SinglePost = ({ article }: any) => {
 
       <SingleArticle
         image={article.image}
+        id={article.id}
         title={article.title}
         categories={article.categories}
         author={article.author}

@@ -1,4 +1,5 @@
 ---
+id: 4
 title: Series Algorithm - Valid Anagram
 publishedAt: "2023-12-24"
 description: Leetcode Question 242. Valid Anagram - Easy
@@ -10,6 +11,8 @@ seoDescription: This is the seoDescription for this markdown file.
 author: { name: "Vo Thanh Luan", image: "https://imgur.com/wnuKAT5.jpg" }
 image: https://i.imgur.com/jp7dHTq.jpg'
 ---
+2l17oi9940hji6e4w8lm
+pscale_pw_UbR89yZysRi7XQuniq6nRKbO5YEQLf7erq8FMhWV8DV
 
 ## Problem statement
 
@@ -165,7 +168,27 @@ In the worst case, where all characters are distinct, the size of the Map is pro
 - Time Complexity: O(n)
 - Space Complexity: O(n)
 
-Here is version of this approach without using the Map data structure:
+Using the HashMap approach for checking anagrams has both upsides and downsides:
+
+1. <b>Upsides:</b>
+
+- <b>Linear Time Complexity:</b> The HashMap approach has a linear time complexity of O(n), where n is the length of the strings. This is efficient, especially for longer strings, as it avoids the O(n log n) time complexity associated with sorting.
+
+- <b>Character Count Preservation:</b> This approach preserves the count of each character, providing more information than just checking if two strings have the same set of characters. This can be useful in certain scenarios where knowing the count of each character is relevant.
+
+- <b>Flexible Data Structure:</b> A HashMap provides flexibility and extensibility. It can be easily adapted to handle more complex requirements, such as tracking character positions, Unicode characters, or handling case sensitivity.
+
+2. <b>Downsides:</b>
+
+- <b>Space Complexity:</b> In the worst case, where all characters are distinct in both strings, the space complexity is O(n), where n is the length of the strings. While this is generally reasonable, it may lead to increased memory usage for very long strings.
+
+- <b>Overhead of Map Operations:</b> While Map operations (set, get, has) generally have an average time complexity of O(1), there is still a slight overhead associated with using a more complex data structure compared to simple array indexing.
+
+- <b>Potential for Hash Collisions:</b> In certain scenarios, if there are many distinct characters and a hash collision occurs, the accuracy of the anagram check might be compromised. However, the likelihood of hash collisions is typically low with a well-designed hash function.
+
+
+
+Here is version of this approach without using the Map so that the approach is applicable to all languages:
 
 ```javascript
 var isAnagram = function(s, t) {
@@ -190,7 +213,7 @@ var isAnagram = function(s, t) {
 };
 ```
 
-Here is another version of it for your reference:
+Here is another version of it forreference:
 ```javascript
 var countCharacterOccurrences = function (str) {
     var charCount = {};
@@ -229,8 +252,7 @@ var isAnagram = function (s, t) {
 };
 ```
 
-
-
+Have fun coding! 😎 and see you in the next exercise.
 
 
 

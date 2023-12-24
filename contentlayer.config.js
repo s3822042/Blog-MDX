@@ -78,6 +78,7 @@ const Article = defineDocumentType(() => ({
   filePathPattern: "articles/*.mdx",
   contentType: "mdx",
   fields: {
+    id: { type: "number", required: true },
     title: { type: "string", required: true },
     publishedAt: { type: "string", required: true },
     description: { type: "string", required: true },

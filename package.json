@@ -15,12 +15,14 @@
     "analyze": "cross-env ANALYZE=true next build",
     "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
+    "prisma:push": "npx prisma db push",
     "rss": "node scripts/rss.mjs",
     "sitemap": "node scripts/sitemap.mjs",
     "postbuild": "npm run rss && npm run sitemap"
   },
   "dependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
+    "@prisma/client": "^5.7.1",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.8",
     "@types/node": "18.11.9",
@@ -55,6 +57,7 @@
     "eslint-plugin-prettier": "^5.1.2",
     "eslint-plugin-tailwindcss": "^3.13.0",
     "postcss": "^8.4.32",
+    "prisma": "^5.7.1",
     "tailwindcss": "^3.4.0"
   }
 }

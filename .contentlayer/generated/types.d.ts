@@ -13,6 +13,7 @@ export type Article = {
   _id: string
   _raw: Local.RawDocumentData
   type: 'Article'
+  id: number
   title: string
   publishedAt: string
   description: string

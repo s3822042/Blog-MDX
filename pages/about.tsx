@@ -12,24 +12,11 @@ const About = () => {
         <div className="divide-y divide-gray-200 dark:divide-gray-700">
           <div className="space-y-2 pb-8 pt-6 md:space-y-5">
             <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 dark:text-gray-100">
-              About
+              About me
             </h1>
           </div>
           <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
             <div className="flex flex-col items-center pt-8">
-              <span className="m-0 block max-w-full p-0">
-                <Image
-                  src={siteMetadata.authorUrl}
-                  alt="author"
-                  width={725}
-                  height={725}
-                  style={{
-                    width: "192px",
-                    height: "192px",
-                  }}
-                  className="rounded-md"
-                />
-              </span>
               <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">
                 Vo Thanh Luan
               </h3>
@@ -95,31 +82,31 @@ const About = () => {
             </div>
             <div className="prose max-w-none py-8 dark:prose-dark xl:col-span-2">
               <p>
-                Vo Thanh Luan is a highly skilled and knowledgeable individual
-                with a strong background in computer science, particularly in
-                the field of software engineering. With his bachelor degree in
-                this field, he has developed a deep understanding of how to
-                design and build software systems that are robust, scalable, and
-                efficient.
+                I am Vo Thanh Luan, a highly skilled and knowledgeable
+                individual with a strong background in computer science,
+                particularly in the field of software engineering. Having earned
+                my bachelor degree in this field, I have developed a deep
+                understanding of how to design and build robust, scalable, and
+                efficient software systems.
               </p>
               <p>
-                One of the key areas of interest for Vo Thanh Luan is deep
-                learning in natural language processing (NLP) and computer
-                vision. He is constantly seeking out opportunities to learn more
-                about these cutting-edge technologies, and is always looking for
-                ways to apply them to real-world problems. He is particularly
-                interested in the potential of deep learning to transform the
-                way we interact with computers and other digital devices, and is
-                always exploring new ways to harness the power of machine
-                learning algorithms to improve the performance of these systems.
+                My key area of interest lies in deep learning, specifically in
+                natural language processing (NLP) and computer vision. I am
+                constantly seeking opportunities to learn more about these
+                cutting-edge technologies and am always looking for ways to
+                apply them to real-world problems. I am particularly fascinated
+                by the potential of deep learning to transform the way we
+                interact with computers and other digital devices. I am
+                continually exploring new ways to harness the power of machine
+                learning algorithms to enhance the performance of these systems.
               </p>
               <p>
-                Vo Thanh Luan is also interested in reinforcement learning, a
-                type of machine learning that focuses on training algorithms to
-                make decisions based on a reward system. He believes that this
-                approach has great potential for a wide range of applications,
-                from gaming to robotics, and is always looking for ways to apply
-                these techniques to real-world problems.
+                Additionally, I am intrigued by reinforcement learning, a type
+                of machine learning that focuses on training algorithms to make
+                decisions based on a reward system. I firmly believe that this
+                approach holds great potential for a wide range of applications,
+                from gaming to robotics. I am actively searching for ways to
+                apply these techniques to solve real-world problems.
               </p>
             </div>
           </div>
