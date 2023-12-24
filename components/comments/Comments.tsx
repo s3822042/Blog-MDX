@@ -71,17 +71,21 @@ const Comment: React.FC<CommentProps> = ({ postId }) => {
       </button>
       <div className="mt-6">
         <h3 className="mb-4 text-xl font-semibold">Comments</h3>
-        {comments.map((comment) => (
-          <div key={comment.id} className="mb-4">
-            <p className="text-gray-800 dark:text-white">
-              {comment.userName ? comment.userName : "Anonymous User"}:{" "}
-              {comment.content}
-            </p>
-            <p className="text-sm text-gray-500 dark:text-white">
-              {new Date(comment.createdAt).toLocaleString()}
-            </p>
-          </div>
-        ))}
+        {comments.length === 0 ? (
+          <p className="text-gray-500 dark:text-white">No comments yet.</p>
+        ) : (
+          comments.map((comment) => (
+            <div key={comment.id} className="mb-4">
+              <p className="text-gray-800 dark:text-white">
+                {comment.userName ? comment.userName : "Anonymous User"}:{" "}
+                {comment.content}
+              </p>
+              <p className="text-sm text-gray-500 dark:text-white">
+                {new Date(comment.createdAt).toLocaleString()}
+              </p>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
