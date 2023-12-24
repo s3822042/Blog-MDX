@@ -24,8 +24,18 @@ const Comment: React.FC<CommentProps> = ({ postId }) => {
         },
         body: JSON.stringify({ content: newComment, postId, userName }),
       });
+
       const data = await response.json();
-      setComments((prevComments) => [...prevComments, data]);
+
+      setComments((prevComments) => {
+        const sortedComments = [...prevComments, data].sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+        );
+
+        return sortedComments;
+      });
+
       setNewComment("");
       setUserName("");
     } catch (error) {
