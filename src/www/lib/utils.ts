@@ -4,6 +4,7 @@ import { twMerge } from "tailwind-merge"
 
 import { DocPageProps } from "@/types/doc"
 import { siteConfig } from "@/config/site"
+import { NUMBERS_OF_ARTICLES_PER_PAGE } from "@/lib/constants"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -22,10 +23,6 @@ export function absoluteUrl(path: string) {
   return `${process.env.NEXT_PUBLIC_APP_URL}${path}`
 }
 
-const SITE_URL = "https://ciara-blog.netlify.app/"
-
-const show_per_page = 10
-
 export function slugify(title: any) {
   return title
     .toString()
@@ -35,21 +32,13 @@ export function slugify(title: any) {
     .replace(/ +/g, "-")
 }
 
-export default async function fetcher<JSON = any>(
-  url: RequestInfo,
-  options?: RequestInit
-): Promise<JSON> {
-  const res = await fetch(url, options)
-  return res.json()
-}
-
 export function pageCount(number: number) {
-  return Math.ceil(number / show_per_page)
+  return Math.ceil(number / NUMBERS_OF_ARTICLES_PER_PAGE)
 }
 
 async function getDocFromParams({ allDocs, params }: DocPageProps) {
   const slug = params.slug?.join("/") || ""
-  const doc = allDocs.find((doc) => doc.slugAsParams === slug)
+  const doc = allDocs.find((doc: any) => doc.slugAsParams === slug)
 
   if (!doc) {
     return null

@@ -3,7 +3,7 @@ import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
 
-const About = () => {
+export default function About() {
   return (
     <div className="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
       <div className="mb-auto">
@@ -113,5 +113,3 @@ const About = () => {
     </div>
   )
 }
-
-export default About

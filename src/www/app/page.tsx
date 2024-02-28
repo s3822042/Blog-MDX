@@ -1,5 +1,4 @@
 import { useState } from "react"
-import Head from "next/head"
 import ArticleCard from "components/articles/ArticleCard"
 import { allArticles } from "contentlayer/generated"
 import { select } from "utils/select"
@@ -30,11 +29,6 @@ export default function Home({ articles }: { articles: any[] }) {
 
   return (
     <div className="w-full">
-      <Head>
-        <title>Blog</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <div className="flex items-center justify-center">
         <SearchBar changeHandler={(e: any) => setSearchValue(e.target.value)} />
       </div>

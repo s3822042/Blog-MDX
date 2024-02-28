@@ -9,6 +9,7 @@ import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import LayoutWrapper from "@/components/layouts/layout-wrapper"
+import { TrpcProvider } from "@/components/layouts/trpc-provider"
 
 export const metadata: Metadata = {
   title: {
@@ -46,14 +47,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
             fontSans.className
           )}
         >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme={siteConfig.theme}
-            enableSystem
-            disableTransitionOnChange
-          >
-            <LayoutWrapper>{children}</LayoutWrapper>
-          </ThemeProvider>
+          <TrpcProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme={siteConfig.theme}
+              enableSystem
+              disableTransitionOnChange
+            >
+              <LayoutWrapper>{children}</LayoutWrapper>
+            </ThemeProvider>
+          </TrpcProvider>
         </body>
       </html>
     </>

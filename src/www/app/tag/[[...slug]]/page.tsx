@@ -1,74 +1,80 @@
-import React from "react"
-import Tag from "components/tags/Tag"
-import { allDocs } from "contentlayer/generated"
-import { select } from "utils/select"
+import { allArticles } from "contentlayer/generated"
 
-import { siteConfig } from "@/config/site"
+import { slugify } from "@/lib/utils"
+import { ArticleCard } from "@/components/modules/articles/article-card"
 
-export function Tags({ articles }: any) {
-  const counts = {} as any
-
-  articles.forEach((category: any) => {
-    category.tags.forEach((subCategory: any) => {
-      const title = subCategory.title
-      if (counts[title]) {
-        counts[title]++
-      } else {
-        counts[title] = 1
-      }
-    })
-  })
-
-  const tags = Object.entries(counts).map(([title, count]) => ({
-    title,
-    count,
-  }))
+export default function Tag({ articles, slug }: any) {
+  // Capitalize first letter and convert space to dash
+  const title = slug[0].toUpperCase() + slug.split(" ").join("-").slice(1)
 
   return (
     <>
-      <div className="flex flex-col items-start justify-start divide-y divide-gray-200 dark:divide-gray-700 md:mt-24 md:flex-row md:items-center md:justify-center md:space-x-6 md:divide-y-0">
-        <div className="space-x-2 pb-8 pt-6 md:space-y-5">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:border-r-2 md:px-6 md:text-6xl md:leading-14">
-            Tags
-          </h1>
-        </div>
-        <div className="flex max-w-lg flex-wrap">
-          {Object.keys(tags).length === 0 && "No tags found."}
-          {Object.values(tags).map((t: any) => {
-            return (
-              <div key={t} className="my-2 mr-5">
-                <Tag text={t.title} />
-                <span className="-ml-2 text-sm font-semibold uppercase text-gray-600 dark:text-gray-300">
-                  {` (${t.count})`}
-                </span>
-              </div>
-            )
-          })}
-        </div>
+      <div className="flex justify-center text-3xl">
+        <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+          Tag: {title} ({articles.length}){" "}
+        </h1>
       </div>
+
+      <main className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {articles.map(
+          ({
+            title,
+            description,
+            slug,
+            image,
+            categories,
+            tags,
+            publishedAt,
+            readingTime,
+          }: any) => (
+            <ArticleCard
+              key={slug}
+              title={title}
+              description={description}
+              slug={slug}
+              image={image}
+              categories={categories}
+              tags={tags}
+              dateTime={publishedAt}
+              date={publishedAt}
+              readingTime={readingTime.text}
+            />
+          )
+        )}
+      </main>
     </>
   )
 }
 
-export async function getStaticProps() {
-  const articles = allArticles
-    .map((article: any) =>
-      select(article, [
-        "slug",
-        "title",
-        "description",
-        "publishedAt",
-        "readingTime",
-        "author",
-        "tags",
-        "categories",
-        "image",
-      ])
-    )
-    .sort(
-      (a: any, b: any) =>
-        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
-    )
+export async function getStaticPaths() {
+  let paths: any = []
+  allArticles.map((article: any) => {
+    article.tags.map((tag: any) => {
+      const slug = slugify(tag.title)
+      paths.push({ params: { slug } })
+    })
+  })
 
-  return { props: { articles } }
+  return { paths, fallback: false }
+}
+
+export async function getStaticProps({
+  params: { slug },
+}: {
+  params: { slug: any }
+}) {
+  let articles: any = []
+
+  // get all tag posts base on slug
+  allArticles.map((article: any) => {
+    article.tags.filter((tag: any) => {
+      const tagSlug = slugify(tag.title)
+      if (tagSlug === slug) {
+        articles.push(article)
+      }
+    })
+    return articles
+  })
+
+  return { props: { articles, slug } }
 }

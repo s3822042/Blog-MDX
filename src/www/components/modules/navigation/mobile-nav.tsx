@@ -1,8 +1,11 @@
+"use client"
+
 import { useState } from "react"
 import Link from "next/link"
-import { headerNavLinks } from "utils/constant"
 
-const MobileNav = () => {
+import { headerNavLinks } from "@/lib/constants"
+
+export function MobileNav() {
   const [navShow, setNavShow] = useState(false)
 
   const onToggleNav = () => {
@@ -81,5 +84,3 @@ const MobileNav = () => {
     </div>
   )
 }
-
-export default MobileNav

@@ -9,7 +9,7 @@
     "url": "https://github.com/s3822042"
   },
   "workspaces": [
-    "apps/*"
+    "src/*"
   ],
   "scripts": {
     "build": "turbo run build",

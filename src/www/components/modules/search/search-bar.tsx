@@ -1,4 +1,14 @@
-export function SearchBar({ changeHandler }: any) {
+"use client"
+
+import React, { ChangeEvent } from "react"
+
+interface SearchBarProps {
+  changeHandler: (event: ChangeEvent<HTMLInputElement>) => void
+}
+
+export function SearchBar(props: SearchBarProps) {
+  const { changeHandler } = props
+
   return (
     <form className="flex w-[40%] items-center">
       <label htmlFor="search" className="sr-only">

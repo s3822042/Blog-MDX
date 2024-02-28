@@ -1,8 +1,13 @@
 import { createContentlayerPlugin } from "next-contentlayer"
+const { env } = require('src/www/server/env');
+
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  publicRuntimeConfig: {
+    NODE_ENV: env.NODE_ENV,
+  },
   swcMinify: true,
   images: {
     remotePatterns: [

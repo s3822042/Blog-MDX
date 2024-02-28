@@ -1,20 +1,32 @@
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { slugify } from "utils/helper"
 
-import ViewCounter from "../views/ViewCounter"
+import { slugify } from "@/lib/utils"
 
-const ArticleCard = ({
-  title,
-  description,
-  slug,
-  image,
-  categories,
-  dateTime,
-  readingTime,
-  tags,
-}: any) => {
+interface ArticleCardProps {
+  title: string
+  description: string
+  slug: string
+  image: string
+  categories: any
+  dateTime: string
+  readingTime: string
+  tags: any
+}
+
+export function ArticleCard(props: ArticleCardProps) {
+  const {
+    title,
+    description,
+    slug,
+    image,
+    categories,
+    dateTime,
+    readingTime,
+    tags,
+  } = props
+
   const categoryTitle = slugify(categories[0].title)
 
   return (
@@ -90,7 +102,7 @@ const ArticleCard = ({
               {dateTime}
             </span>
           </div>
-          <ViewCounter slug={slug} method={"GET"} />
+          {/*<ViewCounter slug={slug} method={"GET"} />*/}
         </div>
       </div>
     </div>

@@ -1,14 +1,15 @@
 import Image from "next/image"
 
-import Comment from "../comments/Comments"
+interface SingleArticleProps {
+  id: string
+  image: string
+  categories: any
+  title: string
+  children: any
+}
 
-export default function SingleArticle({
-  id,
-  image,
-  categories,
-  title,
-  children,
-}: any) {
+export function SingleArticle(props: SingleArticleProps) {
+  const { id, image, categories, title, children } = props
   return (
     <div className="px-4 py-24">
       <div className="mx-auto max-w-[60%]">
@@ -35,7 +36,7 @@ export default function SingleArticle({
         </div>
         <div className="mx-12">
           <hr className="mx-6 my-10 w-full border-t border-indigo-600 dark:border-white" />
-          <Comment postId={id} />
+          {/*<Comment postId={id} />*/}
         </div>
       </div>
     </div>

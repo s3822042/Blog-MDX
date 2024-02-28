@@ -1,10 +1,11 @@
 import React from "react"
 import Link from "next/link"
 
+import { headerNavLinks } from "@/lib/constants"
+import { ScrollToTop } from "@/components/elements/scroll-to-top"
 import { ThemeSwitch } from "@/components/elements/theme-switch"
-import { Footer } from "@/components/navigation/footer"
-import MobileNav from "@/components/navigation/mobile-nav"
-import ScrollTopAndComment from "@/components/ScrollTopAndComment"
+import { Footer } from "@/components/modules/navigation/footer"
+import { MobileNav } from "@/components/modules/navigation/mobile-nav"
 
 interface LayoutWrapperProps {
   children: React.ReactNode
@@ -13,7 +14,7 @@ interface LayoutWrapperProps {
 export function LayoutWrapper({ children }: LayoutWrapperProps) {
   return (
     <div className="mx-auto flex h-screen flex-col px-4 sm:px-6 xl:px-0">
-      <ScrollTopAndComment />
+      <ScrollToTop />
       <header className="flex items-center justify-between px-4 py-10">
         <div>
           <Link href="/" aria-label="header-title">

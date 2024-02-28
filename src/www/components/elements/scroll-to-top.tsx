@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react"
-import { siteMetadata } from "utils/constant"
+"use client"
 
-const ScrollTopAndComment = () => {
+import { useEffect, useState } from "react"
+
+export function ScrollToTop() {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
@@ -21,6 +22,7 @@ const ScrollTopAndComment = () => {
     //@ts-ignore
     document.getElementById("comment").scrollIntoView()
   }
+
   return (
     <div
       className={`fixed bottom-8 right-8 hidden flex-col gap-3 ${
@@ -59,5 +61,3 @@ const ScrollTopAndComment = () => {
     </div>
   )
 }
-
-export default ScrollTopAndComment
