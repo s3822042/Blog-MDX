@@ -1,7 +1,15 @@
 const { z } = require('zod');
 
 const envSchema = z.object({
-  DATABASE_URL: z.string().url(),
+  POSTGRES_DATABASE: z.string(),
+  POSTGRES_URL: z.string(),
+  POSTGRES_PRISMA_URL: z.string(),
+  POSTGRES_URL_NO_SSL: z.string(),
+  POSTGRES_URL_NON_POOLING: z.string(),
+  POSTGRES_USER: z.string(),
+  POSTGRES_HOST: z.string(),
+  POSTGRES_PASSWORD: z.string(),
+  POSTGRES_DATABASE: z.string(),
   NODE_ENV: z.enum(['development', 'test', 'production']),
 });
 
