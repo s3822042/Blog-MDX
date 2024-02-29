@@ -8,6 +8,9 @@
       <excludeFolder url="file://$MODULE_DIR$/.contentlayer/.cache/v0.3.4" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/codeStyles" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/jsLinters" />
+      <excludeFolder url="file://$MODULE_DIR$/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/src/www/.contentlayer" />
+      <excludeFolder url="file://$MODULE_DIR$/src/www/.vercel" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
