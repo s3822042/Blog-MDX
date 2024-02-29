@@ -3,7 +3,7 @@ import RSS from "rss";
 import { allArticles } from "../.contentlayer/generated/index.mjs";
 
 const feed = new RSS({
-  title: "My Blogs",
+  title: "Personal Blog",
   feed_url: "https://ciara-blog.netlify.app/rss.xml",
   site_url: "https://ciara-blog.netlify.app/",
 });
