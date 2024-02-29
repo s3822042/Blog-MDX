@@ -77,7 +77,7 @@ export function CommentForm(props: CommentSectionProps) {
   }
 
   return (
-    <div>
+    <div id="comment">
       <Heading as="h2" size="3xl" className="my-4">
         Share your thoughts
       </Heading>

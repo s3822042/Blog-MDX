@@ -16,11 +16,17 @@ export function ScrollToTop() {
   }, [])
 
   const handleScrollTop = () => {
-    window.scrollTo({ top: 0 })
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
   }
+
   const handleScrollToComment = () => {
     //@ts-ignore
-    document.getElementById("comment").scrollIntoView()
+    document.getElementById("comment").scrollIntoView({
+      behavior: "smooth",
+    })
   }
 
   return (
