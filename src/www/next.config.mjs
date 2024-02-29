@@ -1,13 +1,8 @@
 import { createContentlayerPlugin } from "next-contentlayer"
-const { env } = require('src/www/server/env');
-
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  publicRuntimeConfig: {
-    NODE_ENV: env.NODE_ENV,
-  },
   swcMinify: true,
   images: {
     remotePatterns: [
@@ -17,11 +12,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "i.imgur.com",
-      },
-      {
-        protocol: "https",
-        hostname: "imgur.com",
+        hostname: "i.postimg.cc",
       },
     ],
   },
@@ -29,12 +20,12 @@ const nextConfig = {
     return [
       {
         source: "/algorithm",
-        destination: "/docs/algorithm/series-algorithm-two-sum",
+        destination: "/articles/algorithm/series-algorithm-two-sum",
         permanent: true,
       },
       {
-        source: "/docs/algorithm",
-        destination: "/docs/algorithm/series-algorithm-two-sum",
+        source: "/articles/algorithm",
+        destination: "/articles/algorithm/series-algorithm-two-sum",
         permanent: true,
       },
     ]

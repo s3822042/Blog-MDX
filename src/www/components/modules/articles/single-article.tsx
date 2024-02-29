@@ -1,29 +1,35 @@
+"use client"
+
+import React from "react"
 import Image from "next/image"
 
+import { getTableOfContents } from "@/lib/toc"
+import { ScrollArea } from "@/components/elements/scroll-area"
+import { DashboardTableOfContents } from "@/components/elements/toc"
+
 interface SingleArticleProps {
-  id: string
-  image: string
-  categories: any
-  title: string
-  children: any
+  article: any
+  children: React.ReactNode
 }
 
-export function SingleArticle(props: SingleArticleProps) {
-  const { id, image, categories, title, children } = props
+export async function SingleArticle(props: SingleArticleProps) {
+  const { article, children } = props
+  const toc = await getTableOfContents(article.body.raw)
+
   return (
-    <div className="px-4 py-24">
-      <div className="mx-auto max-w-[60%]">
+    <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
+      <div className="mx-auto w-full min-w-0">
         <div className="flex flex-col items-center justify-center">
           <p className="text-center text-base font-semibold uppercase tracking-wide text-indigo-600 dark:text-white">
-            {categories[0].title}
+            {article.category}
           </p>
           <h1 className="mb-10 mt-2 text-center text-6xl font-extrabold leading-8 tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-            {title}
+            {article.title}
           </h1>
           <div className="relative mb-10">
             <Image
               className="rounded-xl object-cover"
-              src={image}
+              src={article.links?.coverImg}
               width={720}
               height={400}
               alt="blog"
@@ -39,6 +45,17 @@ export function SingleArticle(props: SingleArticleProps) {
           {/*<Comment postId={id} />*/}
         </div>
       </div>
-    </div>
+      {article.toc && (
+        <div className="hidden text-sm xl:block">
+          <div className="sticky top-16 -mt-10 pt-4">
+            <ScrollArea className="pb-10">
+              <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] py-12">
+                <DashboardTableOfContents toc={toc} />
+              </div>
+            </ScrollArea>
+          </div>
+        </div>
+      )}
+    </main>
   )
 }

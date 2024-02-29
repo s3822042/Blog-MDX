@@ -1,11 +1,15 @@
 export const siteConfig = {
   name: "Personal Blog",
   description: "",
-  author: "Vo Thanh Luan",
+  author: {
+    name: "Vo Thanh Luan",
+    url: "https://github.com/s3822042",
+    jobTitle: "Software Engineer",
+    company: "Netcompany",
+  },
   ogImage: "",
   theme: "system", // system, dark or light
   locale: "en-US",
-  authorUrl: "https://github.com/s3822042",
   links: {
     twitter: "https://twitter.com/luanvothanh__",
     github: "https://github.com/s3822042",

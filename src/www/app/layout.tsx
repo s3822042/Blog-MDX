@@ -3,12 +3,12 @@ import React from "react"
 import "@/styles/globals.css"
 
 import { Metadata, Viewport } from "next"
-import { ThemeProvider } from "next-themes"
 
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import LayoutWrapper from "@/components/layouts/layout-wrapper"
+import { ThemeProvider } from "@/components/layouts/theme-provider"
 import { TrpcProvider } from "@/components/layouts/trpc-provider"
 
 export const metadata: Metadata = {
@@ -19,11 +19,11 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   authors: [
     {
-      name: siteConfig.author,
-      url: siteConfig.authorUrl,
+      name: siteConfig.author.name,
+      url: siteConfig.author.url,
     },
   ],
-  creator: "Vo Thanh Luan",
+  creator: siteConfig.author.name,
 }
 
 export const viewport: Viewport = {
@@ -43,7 +43,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <html lang="en">
         <body
           className={cn(
-            "bg-background min-h-screen font-sans antialiased",
+            "min-h-screen bg-background font-sans antialiased",
             fontSans.className
           )}
         >

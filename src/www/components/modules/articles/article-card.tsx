@@ -1,48 +1,36 @@
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { Tag } from "contentlayer/generated"
 
-import { slugify } from "@/lib/utils"
+import { Article } from "@/types/articles"
 
-interface ArticleCardProps {
-  title: string
-  description: string
-  slug: string
-  image: string
-  categories: any
-  dateTime: string
-  readingTime: string
-  tags: any
-}
-
-export function ArticleCard(props: ArticleCardProps) {
+export function ArticleCard(props: Article) {
   const {
     title,
     description,
     slug,
-    image,
-    categories,
-    dateTime,
+    links,
+    publishedAt,
+    category,
     readingTime,
     tags,
   } = props
 
-  const categoryTitle = slugify(categories[0].title)
-
   return (
     <div className="container mx-auto grid px-5 pb-3 pt-6 text-gray-600 lg:pb-6 lg:pt-12">
-      <div className="h-full overflow-hidden rounded-lg border-2 border-gray-200 border-opacity-60">
+      <div className="border-opacity/60 h-full overflow-hidden rounded-lg border-2 border-gray-200">
         <Image
           className="w-full object-cover object-center md:h-36 lg:h-48"
-          src={image}
+          src={links?.coverImg || ""}
           width={720}
           height={400}
           alt="blog"
         />
         <div className="p-6">
-          <Link href={`/category/${categoryTitle}`}>
+          <Link href={`/categories/${category}`}>
             <h2 className="mb-1 text-xs font-medium tracking-widest text-gray-400">
-              {categories[0].title}
+              {category}
             </h2>
           </Link>
 
@@ -51,11 +39,9 @@ export function ArticleCard(props: ArticleCardProps) {
           </h1>
           <p className="mb-3 line-clamp-2 leading-relaxed">{description}</p>
           <div className="mb-3">
-            {tags.map((tag: any) => {
-              const tagTitle = slugify(tag.title)
-
+            {tags.map((tag: Tag, key) => {
               return (
-                <Link href={`/tag/${tagTitle}`} key={tag}>
+                <Link href={`/tags/${tag.title}`} key={key}>
                   <span className="mr-2 font-bold hover:text-indigo-600">
                     #{tag.title}
                   </span>
@@ -66,7 +52,7 @@ export function ArticleCard(props: ArticleCardProps) {
 
           <div className="flex flex-wrap items-center ">
             <a
-              href={`/article/${slug}`}
+              href={slug}
               className="inline-flex items-center text-indigo-500 md:mb-2 lg:mb-0"
             >
               Read More
@@ -99,7 +85,7 @@ export function ArticleCard(props: ArticleCardProps) {
               >
                 <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
               </svg>
-              {dateTime}
+              {publishedAt}
             </span>
           </div>
           {/*<ViewCounter slug={slug} method={"GET"} />*/}
