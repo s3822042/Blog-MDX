@@ -6,6 +6,7 @@ export const siteConfig = {
     url: "https://github.com/s3822042",
     jobTitle: "Software Engineer",
     company: "Netcompany",
+    email: "paulluanvothanh@gmail.com",
   },
   ogImage: "",
   theme: "system", // system, dark or light

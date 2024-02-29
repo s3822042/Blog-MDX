@@ -27,28 +27,28 @@ export function AboutPage() {
               </div>
               <div className="flex space-x-3 pt-6">
                 <Link
-                  href="mailto:paulluanvothanh@gmail.com"
+                  href={`mailto:${siteConfig.author.email}`}
                   className="text-sm text-gray-500 transition hover:text-gray-600"
                 >
-                  <Icons.mail className="size-8 fill-current text-gray-700 hover:text-blue-500 dark:text-neutral-200 dark:hover:text-blue-400" />
+                  <Icons.mail className="size-8 fill-current text-neutral-700 hover:text-blue-500 dark:text-neutral-200 dark:hover:text-blue-400" />
                 </Link>
                 <Link
                   href={siteConfig.links.github}
                   className="text-sm text-gray-500 transition hover:text-gray-600"
                 >
-                  <Icons.gitHub className="size-8 fill-current text-gray-700 hover:text-blue-500 dark:text-neutral-200 dark:hover:text-blue-400" />
+                  <Icons.gitHub className="size-8 fill-current text-neutral-700 hover:text-blue-500 dark:text-neutral-200 dark:hover:text-blue-400" />
                 </Link>
                 <Link
                   href={siteConfig.links.linkedin}
                   className="text-sm text-gray-500 transition hover:text-gray-600"
                 >
-                  <Icons.linkedin className="size-8 fill-current text-gray-700 hover:text-blue-500 dark:text-neutral-200 dark:hover:text-blue-400" />
+                  <Icons.linkedin className="size-8 fill-current text-neutral-700 hover:text-blue-500 dark:text-neutral-200 dark:hover:text-blue-400" />
                 </Link>
                 <Link
                   href={siteConfig.links.twitter}
                   className="text-sm text-gray-500 transition hover:text-gray-600"
                 >
-                  <Icons.twitter className="size-8 fill-current text-gray-700 hover:text-blue-500 dark:text-neutral-200 dark:hover:text-blue-400" />
+                  <Icons.twitter className="size-8 fill-current text-neutral-700 hover:text-blue-500 dark:text-neutral-200 dark:hover:text-blue-400" />
                 </Link>
               </div>
             </div>
