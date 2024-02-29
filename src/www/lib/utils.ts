@@ -28,13 +28,20 @@ export function absoluteUrl(path: string) {
   return `${process.env.NEXT_PUBLIC_APP_URL}${path}`
 }
 
-export function slugify(title: any) {
+export function slugify(title: string) {
   return title
     .toString()
     .toLowerCase()
     .trim()
     .replace(/[^\w ]+/g, "")
     .replace(/ +/g, "-")
+}
+
+export function deslugify(slug: string): string {
+  return slug
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ")
 }
 
 export function pageCount(number: number) {

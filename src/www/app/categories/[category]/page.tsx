@@ -1,5 +1,6 @@
 import { allArticles, Article } from "contentlayer/generated"
 
+import { deslugify, slugify } from "@/lib/utils"
 import { ArticleCard } from "@/components/modules/articles/article-card"
 
 interface CategoryProps {
@@ -11,7 +12,7 @@ interface CategoryProps {
 async function getArticlesFromParams(params: CategoryProps["params"]) {
   const category = params.category
   const articles = allArticles.filter(
-    (articles) => articles.category.toLowerCase() === category.toLowerCase()
+    (articles) => slugify(articles.category) === category.toLowerCase()
   )
   return { category, articles }
 }
@@ -31,7 +32,7 @@ export default async function CategoryPostsPage({ params }: CategoryProps) {
     <>
       <div className="flex justify-center text-3xl">
         <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-          Category: {category} ({articles.length}){" "}
+          Category: {deslugify(category)} ({articles.length}){" "}
         </h1>
       </div>
 

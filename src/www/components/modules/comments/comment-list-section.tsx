@@ -34,7 +34,7 @@ export function CommentListSection() {
             ))}
         </>
       ) : (
-        <p className="text-center">No Comments Found</p>
+        <p className="mt-12 text-center">No Comments Found</p>
       )}
     </>
   )

@@ -1,5 +1,6 @@
 import { allArticles } from "contentlayer/generated"
 
+import { deslugify } from "@/lib/utils"
 import { ArticleCard } from "@/components/modules/articles/article-card"
 
 interface TagsProps {
@@ -35,7 +36,7 @@ export default async function Tag({ params }: TagsProps) {
     <>
       <div className="flex justify-center text-3xl">
         <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-          Tag: {tag} ({articles.length}){" "}
+          Tag: {deslugify(tag)} ({articles.length}){" "}
         </h1>
       </div>
 
