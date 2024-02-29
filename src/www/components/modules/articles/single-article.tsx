@@ -1,19 +1,27 @@
 import React from "react"
 import Image from "next/image"
+import { dehydrate, Hydrate } from "@tanstack/react-query"
+import { Article } from "contentlayer/generated"
 
 import { getTableOfContents } from "@/lib/toc"
 import { ScrollArea } from "@/components/elements/scroll-area"
 import { DashboardTableOfContents } from "@/components/elements/toc"
 import { ArticlesPager } from "@/components/modules/articles/articles-pager"
+import { CommentForm } from "@/components/modules/comments/comment-form"
+import { CommentListSection } from "@/components/modules/comments/comment-list-section"
+import { createSSRHelper } from "@/app/api/trpc/trpc-router"
 
 interface SingleArticleProps {
-  article: any
+  article: Article
   children: React.ReactNode
 }
 
 export async function SingleArticle(props: SingleArticleProps) {
   const { article, children } = props
   const toc = await getTableOfContents(article.body.raw)
+
+  const helpers = createSSRHelper()
+  await helpers.getComments.prefetch({ limit: 10, page: 1 })
 
   return (
     <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
@@ -29,7 +37,7 @@ export async function SingleArticle(props: SingleArticleProps) {
         <div className="relative mb-10">
           <Image
             className="rounded-xl object-cover"
-            src={article.links?.coverImg}
+            src={article.links?.coverImg || "/images/cover.jpg"}
             width={720}
             height={400}
             alt="blog"
@@ -38,12 +46,13 @@ export async function SingleArticle(props: SingleArticleProps) {
         <hr className="my-10 w-16 border-t border-indigo-600 dark:border-white" />
         <div className="pb-12 pt-8">{children}</div>
         <ArticlesPager article={article} />
+        <hr className="my-10 w-16 border-t border-indigo-600 dark:border-white" />
+        <Hydrate state={dehydrate(helpers.queryClient)}>
+          <CommentForm id={article._id} />
+          <CommentListSection />
+        </Hydrate>
       </div>
-      {/*// <div className="mx-12">*/}
-      {/*//   <hr className="mx-6 my-10 w-full border-t border-indigo-600 dark:border-white" />*/}
-      {/*//         /!*<Comment postId={id} />*!/*/}
-      {/*//       </div>*/}
-      {/*//     </div>*/}
+
       {article.toc && (
         <div className="hidden text-sm xl:block">
           <div className="sticky top-16 -mt-10 pt-4">

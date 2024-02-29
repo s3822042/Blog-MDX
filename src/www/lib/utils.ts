@@ -7,9 +7,17 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function formatDate(input: string | number): string {
-  const date = new Date(input)
-  return date.toLocaleDateString("en-US", {
+export function sortByDescending<T>(array: T[], property: keyof T): T[] {
+  return array.slice().sort((a, b) => {
+    return (
+      new Date(b[property] as string).getTime() -
+      new Date(a[property] as string).getTime()
+    )
+  })
+}
+
+export function formatDate(date: Date): string {
+  return date.toLocaleTimeString("en-US", {
     month: "long",
     day: "numeric",
     year: "numeric",

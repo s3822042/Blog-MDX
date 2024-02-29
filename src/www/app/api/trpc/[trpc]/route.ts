@@ -1,7 +1,4 @@
-import {
-  FetchCreateContextFnOptions,
-  fetchRequestHandler,
-} from "@trpc/server/adapters/fetch"
+import { fetchRequestHandler } from "@trpc/server/adapters/fetch"
 
 import { appRouter } from "../trpc-router"
 
@@ -11,11 +8,12 @@ const handler = (request: Request) => {
     endpoint: "/api/trpc",
     req: request,
     router: appRouter,
-    createContext: function (
-      opts: FetchCreateContextFnOptions
-    ): object | Promise<object> {
-      return {}
+    onError({ error }) {
+      if (error.code === "INTERNAL_SERVER_ERROR") {
+        console.error("Something went wrong", error)
+      }
     },
+    createContext: () => ({}),
   })
 }
 

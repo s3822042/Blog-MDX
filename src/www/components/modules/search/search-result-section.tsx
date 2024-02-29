@@ -15,7 +15,7 @@ export function SearchResultSection(props: SearchBarProps) {
 
   const [input, setInput] = React.useState(articles)
 
-  const handleSearch = (event: any) => {
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target
     if (value.length === 0) {
       setInput(articles)
