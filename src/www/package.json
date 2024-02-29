@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "build": "contentlayer build && pnpm build:registry && next build",
+    "build": "contentlayer build && next build",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
