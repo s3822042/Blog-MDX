@@ -57,7 +57,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function SingleArticlePage({ params }: DocPageProps) {
+export default async function ArticlePage({ params }: DocPageProps) {
   const article = await getArticleFromParams({ params })
 
   if (!article) {

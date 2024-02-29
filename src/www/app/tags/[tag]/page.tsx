@@ -29,7 +29,7 @@ export async function generateStaticParams(): Promise<TagsProps["params"][]> {
   ).map((tag) => ({ tag }))
 }
 
-export default async function Tag({ params }: TagsProps) {
+export default async function TagPage({ params }: TagsProps) {
   const { tag, articles } = await getArticlesFromParams(params)
 
   return (

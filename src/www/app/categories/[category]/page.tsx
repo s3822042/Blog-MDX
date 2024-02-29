@@ -25,7 +25,7 @@ export async function generateStaticParams(): Promise<
   }))
 }
 
-export default async function CategoryPostsPage({ params }: CategoryProps) {
+export default async function CategoryPage({ params }: CategoryProps) {
   const { category, articles } = await getArticlesFromParams(params)
 
   return (
