@@ -19,11 +19,9 @@ export async function SingleArticle(props: SingleArticleProps) {
     <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0">
         <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
-          <div
-            className="text-center text-base font-semibold uppercase tracking-wide text-indigo-600 dark:text-white sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
+          <div className="text-center text-base font-semibold uppercase tracking-wide text-indigo-600 dark:text-white sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
             {article.category}
-            <div
-              className="mb-10 mt-2 text-center text-4xl font-extrabold leading-8 tracking-tight text-gray-900 dark:text-white md:text-6xl">
+            <div className="mb-10 mt-2 text-center text-4xl font-extrabold leading-8 tracking-tight text-gray-900 dark:text-white md:text-6xl">
               {article.title}
             </div>
           </div>

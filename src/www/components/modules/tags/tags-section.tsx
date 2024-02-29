@@ -10,7 +10,7 @@ export function TagsSection(props: TagsSectionProps) {
   return (
     <Link
       href={`/tags/${text}`}
-      className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 mr-3 text-sm font-medium uppercase"
+      className="mr-3 text-sm font-medium uppercase text-teal-500 hover:text-teal-600 dark:hover:text-teal-400"
     >
       {text}
     </Link>

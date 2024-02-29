@@ -34,7 +34,7 @@ export default async function Tag({ params }: TagsProps) {
   return (
     <>
       <div className="flex justify-center text-3xl">
-        <h1 className="md:leading-14 text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl">
+        <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
           Tag: {tag} ({articles.length}){" "}
         </h1>
       </div>
