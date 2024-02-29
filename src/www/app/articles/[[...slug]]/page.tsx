@@ -10,7 +10,7 @@ import { absoluteUrl } from "@/lib/utils"
 import { Mdx } from "@/components/layouts/mdx-component"
 import { SingleArticle } from "@/components/modules/articles/single-article"
 
-export async function getDocFromParams({ params }: DocPageProps) {
+async function getArticleFromParams({ params }: DocPageProps) {
   const slug = params.slug?.join("/") || ""
   const article = allArticles.find((doc: any) => doc.slugAsParams === slug)
 
@@ -24,7 +24,7 @@ export async function getDocFromParams({ params }: DocPageProps) {
 export async function generateMetadata({
   params,
 }: DocPageProps): Promise<Metadata> {
-  const article = await getDocFromParams({ params })
+  const article = await getArticleFromParams({ params })
 
   if (!article) {
     return {}
@@ -58,7 +58,7 @@ export async function generateMetadata({
 }
 
 export default async function SingleArticlePage({ params }: DocPageProps) {
-  const article = await getDocFromParams({ params })
+  const article = await getArticleFromParams({ params })
 
   if (!article) {
     notFound()
