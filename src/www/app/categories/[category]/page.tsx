@@ -1,4 +1,4 @@
-import { allArticles } from "contentlayer/generated"
+import { allArticles, Article } from "contentlayer/generated"
 
 import { ArticleCard } from "@/components/modules/articles/article-card"
 
@@ -36,7 +36,7 @@ export default async function CategoryPostsPage({ params }: CategoryProps) {
       </div>
 
       <main className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {articles.map((article: any, key: number) => (
+        {articles.map((article: Article, key: number) => (
           <ArticleCard
             key={key}
             title={article.title}

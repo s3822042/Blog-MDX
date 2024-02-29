@@ -23,7 +23,7 @@ export async function generateStaticParams(): Promise<TagsProps["params"][]> {
     new Set(
       allArticles
         .flatMap((article) => article.tags.map((tag) => tag.title))
-        .filter((tag) => tag)
+        .filter((tag): tag is string => tag !== undefined)
     )
   ).map((tag) => ({ tag }))
 }

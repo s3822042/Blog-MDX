@@ -1,7 +1,8 @@
 "use client"
 
 import { useTheme } from "next-themes"
-import { useMounted } from "@/hooks/use-mounted";
+
+import { useMounted } from "@/hooks/use-mounted"
 
 export function ThemeSwitch() {
   const mounted = useMounted()

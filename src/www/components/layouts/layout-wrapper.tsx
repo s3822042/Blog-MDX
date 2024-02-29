@@ -1,7 +1,6 @@
 import React from "react"
 import Link from "next/link"
 
-import { headerNavLinks } from "@/lib/constants"
 import { ScrollToTop } from "@/components/elements/scroll-to-top"
 import { ThemeSwitch } from "@/components/elements/theme-switch"
 import { Footer } from "@/components/modules/navigation/footer"
@@ -28,15 +27,24 @@ export function LayoutWrapper({ children }: LayoutWrapperProps) {
         </div>
         <div className="flex items-center text-base leading-5">
           <div className="hidden sm:block">
-            {headerNavLinks.map((link) => (
-              <Link
-                key={link.title}
-                href={link.href}
-                className="p-1 font-medium text-gray-900 dark:text-gray-400 sm:p-4"
-              >
-                {link.title}
-              </Link>
-            ))}
+            <Link
+              href="/categories"
+              className="p-1 font-medium text-gray-900 dark:text-gray-400 sm:p-4"
+            >
+              Category
+            </Link>
+            <Link
+              href="/tags"
+              className="p-1 font-medium text-gray-900 dark:text-gray-400 sm:p-4"
+            >
+              Tags
+            </Link>
+            <Link
+              href="/about"
+              className="p-1 font-medium text-gray-900 dark:text-gray-400 sm:p-4"
+            >
+              About
+            </Link>
           </div>
 
           <ThemeSwitch />
