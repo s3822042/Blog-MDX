@@ -41,7 +41,7 @@ export function SearchResultSection(props: SearchBarProps) {
           <div className="relative w-full">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
               <svg
-                className="size-5 text-gray-500 dark:text-gray-400"
+                className="size-5 text-gray-500 dark:text-neutral-400"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"

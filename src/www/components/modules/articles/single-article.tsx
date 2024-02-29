@@ -5,6 +5,7 @@ import { Article } from "contentlayer/generated"
 
 import { getTableOfContents } from "@/lib/toc"
 import { ScrollArea } from "@/components/elements/scroll-area"
+import { Separator } from "@/components/elements/separator"
 import { DashboardTableOfContents } from "@/components/elements/toc"
 import { ArticlesPager } from "@/components/modules/articles/articles-pager"
 import { CommentForm } from "@/components/modules/comments/comment-form"
@@ -43,10 +44,10 @@ export async function SingleArticle(props: SingleArticleProps) {
             alt="blog"
           />
         </div>
-        <hr className="my-10 w-16 border-t border-indigo-600 dark:border-white" />
+        <hr className="mx-auto my-10 w-16 border-t border-indigo-600 dark:border-white" />
         <div className="pb-12 pt-8">{children}</div>
         <ArticlesPager article={article} />
-        <hr className="my-10 w-16 border-t border-indigo-600 dark:border-white" />
+        <Separator className="my-10" />
         <Hydrate state={dehydrate(helpers.queryClient)}>
           <CommentForm id={article._id} />
           <CommentListSection />

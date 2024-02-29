@@ -29,19 +29,19 @@ export function LayoutWrapper({ children }: LayoutWrapperProps) {
           <div className="hidden sm:block">
             <Link
               href="/categories"
-              className="p-1 font-medium text-gray-900 dark:text-gray-400 sm:p-4"
+              className="p-1 font-medium text-gray-900 dark:text-neutral-400 sm:p-4"
             >
               Category
             </Link>
             <Link
               href="/tags"
-              className="p-1 font-medium text-gray-900 dark:text-gray-400 sm:p-4"
+              className="p-1 font-medium text-gray-900 dark:text-neutral-400 sm:p-4"
             >
               Tags
             </Link>
             <Link
               href="/about"
-              className="p-1 font-medium text-gray-900 dark:text-gray-400 sm:p-4"
+              className="p-1 font-medium text-gray-900 dark:text-neutral-400 sm:p-4"
             >
               About
             </Link>

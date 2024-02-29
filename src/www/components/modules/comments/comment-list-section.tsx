@@ -1,6 +1,6 @@
 "use client"
 
-import { formatDate, sortByDescending } from "@/lib/utils";
+import { formatDate, sortByDescending } from "@/lib/utils"
 import { Heading } from "@/components/elements/heading"
 import { trpc } from "@/app/_trpc/client"
 
@@ -11,7 +11,7 @@ export function CommentListSection() {
     return null
   }
 
-  const sortedComments = sortByDescending(data.data.comments, "createdAt");
+  const sortedComments = sortByDescending(data.data.comments, "createdAt")
 
   return (
     <>

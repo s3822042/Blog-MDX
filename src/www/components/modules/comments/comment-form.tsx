@@ -1,16 +1,52 @@
 "use client"
 
 import React, { useState } from "react"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 
 import { queryClient } from "@/lib/query-client"
+import { Button } from "@/components/elements/button"
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/elements/form"
 import { Heading } from "@/components/elements/heading"
+import { Input } from "@/components/elements/input"
+import { Textarea } from "@/components/elements/textarea"
 import { trpc } from "@/app/_trpc/client"
 
 interface CommentSectionProps {
   id: string
 }
 
+const formSchema = z.object({
+  nickname: z.string().min(2, {
+    message: "Nickname must be at least 2 characters.",
+  }),
+  email: z
+    .string()
+    .min(1, { message: "This field has to be filled." })
+    .email("This is not a valid email."),
+  content: z.string().min(10, {
+    message: "Content must have at least 10 characters.",
+  }),
+})
+
 export function CommentForm(props: CommentSectionProps) {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      nickname: "",
+      email: "",
+      content: "",
+    },
+  })
+
   const { id: articleId } = props
 
   const [content, setContent] = useState("")
@@ -33,59 +69,62 @@ export function CommentForm(props: CommentSectionProps) {
     },
   })
 
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     mutate({ articleId, nickname, content, email })
   }
 
   return (
-    <div className="max-w-3xl py-8 md:py-10 lg:py-12">
-      <Heading as="h2" size="3xl">
+    <div>
+      <Heading as="h2" size="3xl" className="my-4">
         Share your thoughts
       </Heading>
-      <form onSubmit={onSubmit}>
-        <div>
-          <label htmlFor="comment" className="mb-2 mt-6 block text-lg">
-            Comment
-          </label>
-          <textarea
-            id="comment"
-            onChange={(e) => setContent(e.target.value)}
-            placeholder="Your comment"
-            className="w-full border p-4"
-            value={content}
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <FormField
+            control={form.control}
+            name="nickname"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Nickname</FormLabel>
+                <FormControl>
+                  <Input placeholder="type your nickname here" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-        </div>
-        <div>
-          <label htmlFor="email" className="mb-2 mt-6 block text-lg">
-            Email
-          </label>
-          <input
-            id="email"
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-            placeholder="Your email"
-            className="w-full border p-4"
-            value={email}
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input placeholder="type your email here" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-        </div>
-        <div>
-          <label htmlFor="nickname" className="mb-2 mt-6 block text-lg">
-            Nickname
-          </label>
-          <input
-            id="nickname"
-            onChange={(e) => setNickname(e.target.value)}
-            type="text"
-            placeholder="Your nickname"
-            className="w-full border p-4"
-            value={nickname}
+          <FormField
+            control={form.control}
+            name="content"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Content</FormLabel>
+                <FormControl>
+                  <Textarea
+                    placeholder="type your comment here..."
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-        </div>
-        <button className="mt-6 bg-slate-700 p-4 text-white" type="submit">
-          Send comment
-        </button>
-      </form>
+          <Button type="submit">Send comment</Button>
+        </form>
+      </Form>
     </div>
   )
 }

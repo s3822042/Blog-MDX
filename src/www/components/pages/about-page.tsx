@@ -10,7 +10,7 @@ export function AboutPage() {
       <div className="mb-auto">
         <div className="divide-y divide-gray-200 dark:divide-gray-700">
           <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-            <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+            <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
               About me
             </h1>
           </div>
@@ -19,10 +19,10 @@ export function AboutPage() {
               <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">
                 {siteConfig.author.name}
               </h3>
-              <div className="text-gray-500 dark:text-gray-400">
+              <div className="text-gray-500 dark:text-neutral-400">
                 {siteConfig.author.jobTitle}
               </div>
-              <div className="text-gray-500 dark:text-gray-400">
+              <div className="text-gray-500 dark:text-neutral-400">
                 {siteConfig.author.company}
               </div>
               <div className="flex space-x-3 pt-6">
@@ -30,25 +30,25 @@ export function AboutPage() {
                   href="mailto:paulluanvothanh@gmail.com"
                   className="text-sm text-gray-500 transition hover:text-gray-600"
                 >
-                  <Icons.mail className="size-8 fill-current text-gray-700 hover:text-blue-500 dark:text-gray-200 dark:hover:text-blue-400" />
+                  <Icons.mail className="size-8 fill-current text-gray-700 hover:text-blue-500 dark:text-neutral-200 dark:hover:text-blue-400" />
                 </Link>
                 <Link
                   href={siteConfig.links.github}
                   className="text-sm text-gray-500 transition hover:text-gray-600"
                 >
-                  <Icons.gitHub className="size-8 fill-current text-gray-700 hover:text-blue-500 dark:text-gray-200 dark:hover:text-blue-400" />
+                  <Icons.gitHub className="size-8 fill-current text-gray-700 hover:text-blue-500 dark:text-neutral-200 dark:hover:text-blue-400" />
                 </Link>
                 <Link
                   href={siteConfig.links.linkedin}
                   className="text-sm text-gray-500 transition hover:text-gray-600"
                 >
-                  <Icons.linkedin className="size-8 fill-current text-gray-700 hover:text-blue-500 dark:text-gray-200 dark:hover:text-blue-400" />
+                  <Icons.linkedin className="size-8 fill-current text-gray-700 hover:text-blue-500 dark:text-neutral-200 dark:hover:text-blue-400" />
                 </Link>
                 <Link
                   href={siteConfig.links.twitter}
                   className="text-sm text-gray-500 transition hover:text-gray-600"
                 >
-                  <Icons.twitter className="size-8 fill-current text-gray-700 hover:text-blue-500 dark:text-gray-200 dark:hover:text-blue-400" />
+                  <Icons.twitter className="size-8 fill-current text-gray-700 hover:text-blue-500 dark:text-neutral-200 dark:hover:text-blue-400" />
                 </Link>
               </div>
             </div>

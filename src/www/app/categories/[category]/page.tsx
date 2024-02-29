@@ -30,7 +30,7 @@ export default async function CategoryPostsPage({ params }: CategoryProps) {
   return (
     <>
       <div className="flex justify-center text-3xl">
-        <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+        <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-neutral-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
           Category: {category} ({articles.length}){" "}
         </h1>
       </div>
