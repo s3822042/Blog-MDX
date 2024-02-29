@@ -1,12 +1,11 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
+import { useMounted } from "@/hooks/use-mounted";
 
 export function ThemeSwitch() {
-  const [mounted, setMounted] = useState(false)
+  const mounted = useMounted()
   const { theme, setTheme, resolvedTheme } = useTheme()
-  useEffect(() => setMounted(true), [])
 
   return (
     <button
