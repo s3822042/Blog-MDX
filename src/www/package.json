@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "build": "contentlayer build && prisma generate && prisma migrate deploy && pnpm prisma db push && next build",
+    "build": "contentlayer build && pnpm prisma generate && pnpm prisma migrate deploy && pnpm prisma db push && next build",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
@@ -17,7 +17,8 @@
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
     "rss": "node scripts/rss.mjs",
-    "sitemap": "node scripts/sitemap.mjs"
+    "sitemap": "node scripts/sitemap.mjs",
+    "postinstall": "pnpm prisma generate"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
