@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils"
 import LayoutWrapper from "@/components/layouts/layout-wrapper"
 import { ThemeProvider } from "@/components/layouts/theme-provider"
 import { TrpcProvider } from "@/components/layouts/trpc-provider"
+import { Toaster } from "@/components/modules/toaster"
 
 export const metadata: Metadata = {
   title: {
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <LayoutWrapper>{children}</LayoutWrapper>
             </ThemeProvider>
           </TrpcProvider>
+          <Toaster />
         </body>
       </html>
     </>

@@ -1,11 +1,12 @@
 "use client"
 
-import React, { useState } from "react"
+import React from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { queryClient } from "@/lib/query-client"
+import { useToast } from "@/hooks/use-toast"
 import { Button } from "@/components/elements/button"
 import {
   Form,
@@ -38,6 +39,8 @@ const formSchema = z.object({
 })
 
 export function CommentForm(props: CommentSectionProps) {
+  const { toast } = useToast()
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -49,16 +52,7 @@ export function CommentForm(props: CommentSectionProps) {
 
   const { id: articleId } = props
 
-  const [content, setContent] = useState("")
-  const [email, setEmail] = useState("")
-  const [nickname, setNickname] = useState("")
-
   const { mutate } = trpc.createComment.useMutation({
-    onSettled: () => {
-      setContent("")
-      setNickname("")
-      setEmail("")
-    },
     onSuccess: async () => {
       await queryClient.invalidateQueries({
         queryKey: [
@@ -70,7 +64,16 @@ export function CommentForm(props: CommentSectionProps) {
   })
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    mutate({ articleId, nickname, content, email })
+    mutate({
+      articleId,
+      nickname: values.nickname,
+      content: values.content,
+      email: values.email,
+    })
+    toast({
+      variant: "success",
+      title: "Comment posted!",
+    })
   }
 
   return (
