@@ -28,6 +28,10 @@ export function SearchResultSection(props: SearchBarProps) {
 
     const results = fuse.search(value)
     const items = results.map((result) => result.item)
+    items.sort(
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    )
     setInput(items)
   }
 
