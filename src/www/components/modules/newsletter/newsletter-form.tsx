@@ -13,7 +13,6 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/elements/form"
 import { Input } from "@/components/elements/input"
@@ -39,10 +38,7 @@ export function NewsletterForm() {
   const { mutate } = trpc.signUpNewsletter.useMutation({
     onSuccess: async () => {
       await queryClient.invalidateQueries({
-        queryKey: [
-          ["signUpNewsletter"],
-          { input: { limit: 10, page: 1 }, type: "query" },
-        ],
+        queryKey: [["signUpNewsletter"], { type: "query" }],
       })
     },
   })
@@ -59,21 +55,25 @@ export function NewsletterForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex items-center justify-start"
+      >
         <FormField
           control={form.control}
           name="email"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
+            <FormItem className="md:mr-4 md:w-2/5">
               <FormControl>
-                <Input placeholder="type your email here" {...field} />
+                <Input className="w-full" placeholder={"Email"} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit">Sign up for newsletter</Button>
+        <Button type="submit" className="rounded-lg px-6 py-4 md:w-1/5">
+          Subscribe
+        </Button>
       </form>
     </Form>
   )

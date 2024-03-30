@@ -1,4 +1,5 @@
 import { Article } from "@/types/articles"
+import { HeroSection } from "@/components/modules/banner/hero-section"
 import SearchResultSection from "@/components/modules/search/search-result-section"
 
 interface HomePageProps {
@@ -10,6 +11,7 @@ const HomePage = (props: HomePageProps) => {
 
   return (
     <div className="w-full">
+      <HeroSection />
       <SearchResultSection articles={articles} />
     </div>
   )

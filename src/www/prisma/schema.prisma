@@ -24,8 +24,7 @@ model Views {
 }
 
 model Newsletter {
-  id Int @id @default(autoincrement())
-  email  String
+  email  String @id @db.VarChar(128)
   isRegistered Boolean @default(false)
 }
 
