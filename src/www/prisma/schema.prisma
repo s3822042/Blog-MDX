@@ -23,4 +23,11 @@ model Views {
   count Int @default(1)
 }
 
+model Newsletter {
+  id Int @id @default(autoincrement())
+  email  String
+  isRegister Boolean @default(false)
+}
+
+
 

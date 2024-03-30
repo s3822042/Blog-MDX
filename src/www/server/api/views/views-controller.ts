@@ -9,12 +9,7 @@ export const increaseViewCountHandler = async ({
 }) => {
   try {
     const { slug } = input
-    if (!slug) {
-      throw new TRPCError({
-        code: "BAD_REQUEST",
-        message: "Slug is required",
-      })
-    }
+
     let view = await prisma.views.findUnique({
       where: { slug },
     })
@@ -40,6 +35,7 @@ export const increaseViewCountHandler = async ({
     return {
       status: "success",
       data: {
+        slug,
         view,
       },
     }
@@ -54,12 +50,7 @@ export const increaseViewCountHandler = async ({
 export const getViewsHandler = async ({ input }: { input: ViewsInput }) => {
   try {
     const { slug } = input
-    if (!slug) {
-      throw new TRPCError({
-        code: "BAD_REQUEST",
-        message: "Slug is required",
-      })
-    }
+
     const views = await prisma.views.findUnique({
       where: { slug },
     })
@@ -68,6 +59,7 @@ export const getViewsHandler = async ({ input }: { input: ViewsInput }) => {
       status: "success",
       data: {
         views: views?.count || 0,
+        slug,
       },
     }
   } catch (err: any) {

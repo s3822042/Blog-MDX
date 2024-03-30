@@ -1,12 +1,13 @@
+"use client"
+
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Tag } from "contentlayer/generated"
 
 import { Article } from "@/types/articles"
-import { serverClient } from "@/app/_trpc/serverClient"
 
-export async function ArticleCard(props: Article) {
+export function ArticleCard(props: Article & { views: any }) {
   const {
     title,
     description,
@@ -16,9 +17,8 @@ export async function ArticleCard(props: Article) {
     category,
     readingTime,
     tags,
+    views,
   } = props
-
-  const { data } = await serverClient.getViews({ slug: slug })
 
   return (
     <div className="container mx-auto grid px-5 pb-3 pt-6 text-gray-600 lg:pb-6 lg:pt-12">
@@ -29,6 +29,7 @@ export async function ArticleCard(props: Article) {
           width={720}
           height={400}
           alt="blog"
+          priority
         />
         <div className="p-6">
           <Link href={`/categories/${category}`}>
@@ -45,7 +46,7 @@ export async function ArticleCard(props: Article) {
             <span>
               <span>
                 {Intl.NumberFormat("en-US", { notation: "compact" }).format(
-                  data.views
+                  views
                 )}{" "}
                 {" views"}
               </span>
@@ -64,7 +65,7 @@ export async function ArticleCard(props: Article) {
             })}
           </div>
 
-          <div className="flex flex-wrap items-center ">
+          <div className="flex flex-wrap items-center">
             <a
               href={slug}
               className="inline-flex items-center text-indigo-500 md:mb-2 lg:mb-0"

@@ -1,5 +1,3 @@
-"use client"
-
 import React from "react"
 import Image from "next/image"
 import { Article } from "contentlayer/generated"
@@ -11,7 +9,7 @@ import { DashboardTableOfContents } from "@/components/elements/toc"
 import { ArticlesPager } from "@/components/modules/articles/articles-pager"
 import { CommentForm } from "@/components/modules/comments/comment-form"
 import { CommentListSection } from "@/components/modules/comments/comment-list-section"
-import { trpc } from "@/app/_trpc/client"
+import { serverClient } from "@/app/_trpc/serverClient"
 import { ReportView } from "@/app/articles/[[...slug]]/views"
 
 interface SingleArticleProps {
@@ -23,9 +21,9 @@ export async function SingleArticle(props: SingleArticleProps) {
   const { article, children } = props
   const toc = await getTableOfContents(article.body.raw)
 
-  const { data: viewsData } = trpc.getViews.useQuery({ slug: article.slug })
-
-  if (!viewsData) return null
+  const { data: viewsData } = await serverClient.getViews({
+    slug: article.slug,
+  })
 
   return (
     <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
@@ -34,7 +32,7 @@ export async function SingleArticle(props: SingleArticleProps) {
         <span>
           <span>
             {Intl.NumberFormat("en-US", { notation: "compact" }).format(
-              viewsData.data.views
+              viewsData.views
             )}{" "}
             {" views"}
           </span>
@@ -54,6 +52,7 @@ export async function SingleArticle(props: SingleArticleProps) {
             width={720}
             height={400}
             alt="blog"
+            priority
           />
         </div>
         <hr className="mx-auto my-10 w-16 border-t border-indigo-600 dark:border-white" />

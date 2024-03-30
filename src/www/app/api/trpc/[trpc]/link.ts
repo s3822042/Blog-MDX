@@ -1,4 +1,4 @@
-import { httpBatchLink } from "@trpc/react-query"
+import { unstable_httpBatchStreamLink } from "@trpc/client"
 
 const getBaseUrl = () => {
   if (typeof window !== "undefined") return ""
@@ -6,4 +6,4 @@ const getBaseUrl = () => {
 }
 
 export const createLink = () =>
-  httpBatchLink({ url: `${getBaseUrl()}/api/trpc` })
+  unstable_httpBatchStreamLink({ url: `${getBaseUrl()}/api/trpc` })

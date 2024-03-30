@@ -1,6 +1,9 @@
 "use client"
 
+import { useEffect } from "react"
+
 import { queryClient } from "@/lib/query-client"
+import { useMounted } from "@/hooks/use-mounted"
 import { trpc } from "@/app/_trpc/client"
 
 interface ReportViewProps {
@@ -8,23 +11,27 @@ interface ReportViewProps {
 }
 
 export function ReportView(props: ReportViewProps) {
+  const mounted = useMounted()
+
   const { slug } = props
 
   const mutation = trpc.increaseViews.useMutation({
     onSuccess: async () => {
-      // Invalidate queries after successful mutation
       await queryClient.invalidateQueries({
         queryKey: [["increaseViews"], { input: { slug }, type: "query" }],
       })
 
-      // Refetch data after mutation using a query
       await queryClient.refetchQueries({
         queryKey: [["getViews"], { input: { slug }, type: "query" }],
       })
     },
   })
 
-  console.log(mutation)
+  useEffect(() => {
+    if (mounted) {
+      mutation.mutate({ slug })
+    }
+  }, [mounted, slug])
 
   return null
 }
