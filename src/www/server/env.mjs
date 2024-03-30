@@ -9,7 +9,6 @@ const envSchema = z.object({
   POSTGRES_USER: z.string(),
   POSTGRES_HOST: z.string(),
   POSTGRES_PASSWORD: z.string(),
-  POSTGRES_DATABASE: z.string(),
   NODE_ENV: z.enum(['development', 'test', 'production']),
 });
 

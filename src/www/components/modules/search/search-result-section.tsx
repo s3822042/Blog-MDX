@@ -4,7 +4,7 @@ import React from "react"
 import Fuse from "fuse.js"
 
 import { Article } from "@/types/articles"
-import ArticleCard from "@/components/modules/articles/article-card"
+import { ArticleCard } from "@/components/modules/articles/article-card"
 
 interface SearchBarProps {
   articles: Article[]

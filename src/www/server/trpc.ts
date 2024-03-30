@@ -1,8 +1,8 @@
-import { Context } from "@/server/context"
+import { createContext } from "@/server/context"
 import { transformer } from "@/server/utils/transformer"
 import { initTRPC } from "@trpc/server"
 
-export const t = initTRPC.context<Context>().create({
+export const t = initTRPC.context<typeof createContext>().create({
   /**
    * @link https://trpc.io/docs/v11/data-transformers
    */
@@ -14,3 +14,8 @@ export const t = initTRPC.context<Context>().create({
     return shape
   },
 })
+
+export const createCallerFactory = t.createCallerFactory
+export const router = t.router
+export const publicProcedure = t.procedure
+export const mergeRouters = t.mergeRouters

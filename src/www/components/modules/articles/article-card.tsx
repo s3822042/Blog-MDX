@@ -4,8 +4,9 @@ import Link from "next/link"
 import { Tag } from "contentlayer/generated"
 
 import { Article } from "@/types/articles"
+import { serverClient } from "@/app/_trpc/serverClient"
 
-export function ArticleCard(props: Article) {
+export async function ArticleCard(props: Article) {
   const {
     title,
     description,
@@ -16,6 +17,8 @@ export function ArticleCard(props: Article) {
     readingTime,
     tags,
   } = props
+
+  const { data } = await serverClient.getViews({ slug: slug })
 
   return (
     <div className="container mx-auto grid px-5 pb-3 pt-6 text-gray-600 lg:pb-6 lg:pt-12">
@@ -37,7 +40,18 @@ export function ArticleCard(props: Article) {
           <h1 className="mb-3 text-lg font-medium text-gray-900 dark:text-white">
             {title}
           </h1>
-          <p className="mb-3 line-clamp-2 leading-relaxed">{description}</p>
+          <div className="mb-3">
+            <p className="mb-1 line-clamp-2 leading-relaxed">{description}</p>
+            <span>
+              <span>
+                {Intl.NumberFormat("en-US", { notation: "compact" }).format(
+                  data.views
+                )}{" "}
+                {" views"}
+              </span>
+            </span>
+          </div>
+
           <div className="mb-3">
             {tags.map((tag: Tag, key) => {
               return (
@@ -88,7 +102,6 @@ export function ArticleCard(props: Article) {
               {publishedAt}
             </span>
           </div>
-          {/*<ViewCounter slug={slug} method={"GET"} />*/}
         </div>
       </div>
     </div>

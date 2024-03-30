@@ -7,7 +7,7 @@ interface HomePageProps {
   articles: Article[]
 }
 
-export function HomePage(props: HomePageProps) {
+const HomePage = (props: HomePageProps) => {
   const { articles } = props
 
   return (
@@ -16,3 +16,5 @@ export function HomePage(props: HomePageProps) {
     </div>
   )
 }
+
+export default HomePage

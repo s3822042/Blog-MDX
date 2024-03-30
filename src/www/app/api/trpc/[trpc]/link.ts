@@ -1,4 +1,3 @@
-import { env } from "@/server/env.mjs"
 import { httpBatchLink } from "@trpc/react-query"
 
 const getBaseUrl = () => {
