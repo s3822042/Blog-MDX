@@ -8,11 +8,17 @@ import { trpc } from "@/app/_trpc/client"
 
 export function CommentListSection() {
   const mounted = useMounted()
-  const { data: commentData, isLoading } = trpc.getComments.useQuery({ limit: 10, page: 1 })
+  const { data: commentData, isLoading } = trpc.getComments.useQuery({
+    limit: 10,
+    page: 1,
+  })
 
   if (isLoading) return <CommentListSectionSkeleton />
 
-  const sortedComments = sortByDescending(commentData!.data.comments, "createdAt")
+  const sortedComments = sortByDescending(
+    commentData!.data.comments,
+    "createdAt"
+  )
 
   return (
     <>
