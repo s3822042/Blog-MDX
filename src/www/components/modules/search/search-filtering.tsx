@@ -1,11 +1,13 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Fuse from "fuse.js"
 
 import { Article } from "@/types/articles"
 import { ViewsData } from "@/types/views"
-import ArticleCard from "@/components/modules/articles/article-card"
+import { useDebounce } from "@/hooks/use-debounce"
+import { ArticleCard } from "@/components/modules/articles/article-card"
+import { ArticleCardSkeleton } from "@/components/modules/articles/article-card-skeleton"
 
 interface SearchBarProps {
   articles: Article[]
@@ -17,9 +19,16 @@ export default function SearchFiltering(props: SearchBarProps) {
 
   const [input, setInput] = useState(articles)
 
+  const [searchValue, setSearchValue] = useState("")
+  const debouncedSearchValue = useDebounce(searchValue, 1000)
+
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target
-    if (value.length === 0) {
+    setSearchValue(value)
+  }
+
+  useEffect(() => {
+    if (debouncedSearchValue.length === 0) {
       setInput(articles)
       return
     }
@@ -28,14 +37,14 @@ export default function SearchFiltering(props: SearchBarProps) {
       keys: ["title", "category", "tags"],
     })
 
-    const results = fuse.search(value)
+    const results = fuse.search(debouncedSearchValue)
     const items = results.map((result) => result.item)
     items.sort(
       (a, b) =>
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
     )
     setInput(items)
-  }
+  }, [debouncedSearchValue])
 
   const viewsDataMap: Record<string, number | bigint> = viewsData.reduce(
     (acc: Record<string, number | bigint>, curr: ViewsData) => {
@@ -81,21 +90,25 @@ export default function SearchFiltering(props: SearchBarProps) {
         </form>
       </div>
       <main className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {input.map((article: any, key) => (
-          <ArticleCard
-            key={key}
-            title={article.title}
-            description={article.description}
-            slug={article.slug}
-            tags={article.tags}
-            links={article.links}
-            category={article.category}
-            published={article.published}
-            publishedAt={article.publishedAt}
-            readingTime={article.readingTime.text}
-            views={viewsDataMap[article.slug] || 0}
-          />
-        ))}
+        {articles.length === 0
+          ? Array(10)
+              .fill(null)
+              .map((_, index) => <ArticleCardSkeleton key={index} />)
+          : input.map((article: any, key) => (
+              <ArticleCard
+                key={key}
+                title={article.title}
+                description={article.description}
+                slug={article.slug}
+                tags={article.tags}
+                links={article.links}
+                category={article.category}
+                published={article.published}
+                publishedAt={article.publishedAt}
+                readingTime={article.readingTime.text}
+                views={viewsDataMap[article.slug] || 0}
+              />
+            ))}
       </main>
     </>
   )

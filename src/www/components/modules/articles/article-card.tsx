@@ -8,7 +8,7 @@ import { Tag } from "contentlayer/generated"
 
 import { Article } from "@/types/articles"
 
-export function ArticleCard(props: Article & { views: any }) {
+export function ArticleCard(props: Article & { views: number | bigint }) {
   const {
     title,
     description,
@@ -97,5 +97,3 @@ export function ArticleCard(props: Article & { views: any }) {
     </div>
   )
 }
-
-export default ArticleCard

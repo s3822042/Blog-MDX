@@ -3,21 +3,20 @@
 import { formatDate, sortByDescending } from "@/lib/utils"
 import { useMounted } from "@/hooks/use-mounted"
 import { Heading } from "@/components/elements/heading"
+import { CommentListSectionSkeleton } from "@/components/modules/comments/comment-list-section-skeleton"
 import { trpc } from "@/app/_trpc/client"
 
 export function CommentListSection() {
   const mounted = useMounted()
-  const { data } = trpc.getComments.useQuery({ limit: 10, page: 1 })
+  const { data: commentData, isLoading } = trpc.getComments.useQuery({ limit: 10, page: 1 })
 
-  if (!data) {
-    return null
-  }
+  if (isLoading) return <CommentListSectionSkeleton />
 
-  const sortedComments = sortByDescending(data.data.comments, "createdAt")
+  const sortedComments = sortByDescending(commentData!.data.comments, "createdAt")
 
   return (
     <>
-      {data.data.comments.length > 0 ? (
+      {commentData && commentData.data.comments.length > 0 ? (
         <>
           <Heading as="h2" size="3xl" className="mt-12">
             What people are saying

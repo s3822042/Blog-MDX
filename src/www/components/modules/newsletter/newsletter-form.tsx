@@ -57,21 +57,28 @@ export function NewsletterForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex items-center justify-start"
+        className="flex flex-col items-start justify-start sm:flex-row sm:items-center"
       >
         <FormField
           control={form.control}
           name="email"
           render={({ field }) => (
-            <FormItem className="md:mr-4 md:w-2/5">
+            <FormItem className="mb-4 w-full sm:mb-0 sm:mr-4 sm:w-3/5">
               <FormControl>
-                <Input className="w-full" placeholder={"Email"} {...field} />
+                <Input
+                  className="h-12 w-full text-lg"
+                  placeholder={"Email"}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit" className="rounded-lg px-6 py-4 md:w-1/5">
+        <Button
+          type="submit"
+          className="h-12 w-full rounded-lg text-lg sm:w-1/5 md:-mt-2"
+        >
           Subscribe
         </Button>
       </form>

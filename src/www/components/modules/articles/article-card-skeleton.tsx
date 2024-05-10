@@ -1,34 +1,23 @@
-import React from "react"
+import { Skeleton } from "@/components/elements/skeleton"
 
-interface ArticleCardSkeletonProps {
-  numberOfSkeletons: number
-}
-
-export function ArticleCardSkeleton(props: ArticleCardSkeletonProps) {
-  const { numberOfSkeletons } = props
-
+export function ArticleCardSkeleton() {
   return (
     <div className="container mx-auto grid px-5 pb-3 pt-6 text-gray-600 lg:pb-6 lg:pt-12">
-      {[...Array(numberOfSkeletons)].map((_, index) => (
-        <div
-          key={index}
-          className="border-opacity/60 h-full animate-pulse overflow-hidden rounded-lg border-2 border-gray-200"
-        >
-          <div className="h-36 w-full bg-gray-300 md:h-36 lg:h-48"></div>
-          <div className="p-6">
-            <div className="mb-4 h-4 w-1/2 bg-gray-300"></div>
-            <div className="mb-4 h-4 w-5/6 bg-gray-300"></div>
-            <div className="mb-4 h-4 w-2/3 bg-gray-300"></div>
-            <div className="mb-4 h-4 w-1/3 bg-gray-300"></div>
-            <div className="flex flex-wrap items-center">
-              <div className="mr-3 h-4 w-20 bg-gray-300"></div>
-              <div className="h-4 w-16 bg-gray-300"></div>
-            </div>
+      <div className="border-opacity/60 h-full overflow-hidden rounded-lg border-2 border-gray-200">
+        <Skeleton className="h-36 w-full lg:h-48" />
+        <div className="p-6">
+          <Skeleton className="mb-1 h-4 w-20" />
+          <Skeleton className="mb-3 h-6 w-3/4" />
+          <Skeleton className="mb-3 h-4 w-full" />
+          <Skeleton className="mb-3 h-4 w-1/2" />
+          <div className="flex flex-wrap items-center">
+            <Skeleton className="inline-flex h-4 w-24 items-center md:mb-2 lg:mb-0" />
+            <Skeleton className="ml-auto mr-2 inline-flex h-4 w-16 items-center md:ml-0 lg:ml-auto" />
+            <Skeleton className="mr-2 inline-flex h-4 w-16 items-center" />
+            <Skeleton className="inline-flex h-4 w-16 items-center" />
           </div>
         </div>
-      ))}
+      </div>
     </div>
   )
 }
-
-export default ArticleCardSkeleton

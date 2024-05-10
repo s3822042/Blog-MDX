@@ -2,7 +2,7 @@ export function HeroIllustration() {
   return (
     <svg
       id="70093593-85a2-447b-b81e-208691c845a3"
-      className="max-w-[80%] md:max-w-[45rem]"
+      className="max-w-full md:max-w-[45rem]"
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
