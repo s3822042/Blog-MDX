@@ -6,13 +6,13 @@ import {
   createCommentSchema,
   filterQuery,
 } from "@/server/api/comment/comment-schema"
-import { t } from "@/server/trpc"
+import { publicProcedure, router } from "@/server/trpc"
 
-const CommentRouter = t.router({
-  createComment: t.procedure
+const CommentRouter = router({
+  createComment: publicProcedure
     .input(createCommentSchema)
     .mutation(({ input }) => createCommentHandler({ input })),
-  getComments: t.procedure
+  getComments: publicProcedure
     .input(filterQuery)
     .query(({ input }) => getCommentsHandler({ filterQuery: input })),
 })

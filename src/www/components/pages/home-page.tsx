@@ -1,18 +1,20 @@
-"use client"
-
 import { Article } from "@/types/articles"
-import { SearchResultSection } from "@/components/modules/search/search-result-section"
+import { HeroSection } from "@/components/modules/banner/hero-section"
+import SearchResultSection from "@/components/modules/search/search-result-section"
 
 interface HomePageProps {
   articles: Article[]
 }
 
-export function HomePage(props: HomePageProps) {
+const HomePage = (props: HomePageProps) => {
   const { articles } = props
 
   return (
     <div className="w-full">
+      <HeroSection />
       <SearchResultSection articles={articles} />
     </div>
   )
 }
+
+export default HomePage

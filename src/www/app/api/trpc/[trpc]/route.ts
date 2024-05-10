@@ -1,6 +1,6 @@
+import { appRouter } from "@/server"
+import { createContext } from "@/server/context"
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch"
-
-import { appRouter } from "../trpc-router"
 
 const handler = (request: Request) => {
   console.log(`incoming request ${request.url}`)
@@ -13,7 +13,7 @@ const handler = (request: Request) => {
         console.error("Something went wrong", error)
       }
     },
-    createContext: () => ({}),
+    createContext: async () => await createContext(),
   })
 }
 
