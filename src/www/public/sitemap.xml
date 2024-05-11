@@ -1,50 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ciara-blog.netlify.app/article/404</loc>
+    <loc>https://blog.luanvothanh.com/articles/layout</loc>
   </url>
 
   <url>
-    <loc>https://ciara-blog.netlify.app/article/about</loc>
+    <loc>https://blog.luanvothanh.com/articles/not-found</loc>
   </url>
 
   <url>
-    <loc>https://ciara-blog.netlify.app/article/categories</loc>
+    <loc>https://blog.luanvothanh.com/articles/page</loc>
   </url>
 
   <url>
-    <loc>https://ciara-blog.netlify.app/article/</loc>
+    <loc>https://blog.luanvothanh.com/articles/algorithms/two-sum</loc>
   </url>
 
   <url>
-    <loc>https://ciara-blog.netlify.app/article/tags</loc>
+    <loc>https://blog.luanvothanh.com/articles/algorithms/valid-anagram</loc>
   </url>
 
   <url>
     <loc
-      >https://ciara-blog.netlify.app/article/authentication-with-next-and-prisma</loc
+      >https://blog.luanvothanh.com/articles/data-analytics/data-modelling-using-scikit-learn</loc
     >
   </url>
 
   <url>
     <loc
-      >https://ciara-blog.netlify.app/article/data-modelling-using-scikit-learn</loc
+      >https://blog.luanvothanh.com/articles/web-development/authentication-with-next-and-prisma</loc
     >
   </url>
 
   <url>
     <loc
-      >https://ciara-blog.netlify.app/article/front-end-framework-choice-2023</loc
+      >https://blog.luanvothanh.com/articles/web-development/frontend-framework-comparison</loc
     >
   </url>
 
   <url>
-    <loc>https://ciara-blog.netlify.app/article/series-algorithm-two-sum</loc>
-  </url>
-
-  <url>
-    <loc
-      >https://ciara-blog.netlify.app/article/series-algorithm-valid-anagram</loc
-    >
+    <loc>https://blog.luanvothanh.com/articles/system-design/scalability</loc>
   </url>
 </urlset>

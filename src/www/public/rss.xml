@@ -1,45 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title><![CDATA[My Blogs]]></title>
-        <description><![CDATA[My Blogs]]></description>
-        <link>https://ciara-blog.netlify.app/</link>
+        <title><![CDATA[Personal Blog]]></title>
+        <description><![CDATA[Personal Blog]]></description>
+        <link>https://blog.luanvothanh.com/</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 24 Dec 2023 18:54:00 GMT</lastBuildDate>
-        <atom:link href="https://ciara-blog.netlify.app/rss.xml" rel="self" type="application/rss+xml"/>
-        <item>
-            <title><![CDATA[Authentication and DB access with Next, Prisma]]></title>
-            <description><![CDATA[How to connect your mongoDB with prisma and next.js]]></description>
-            <link>https://ciara-blog.netlify.app/articles/authentication-with-next-and-prisma</link>
-            <guid isPermaLink="true">https://ciara-blog.netlify.app/articles/authentication-with-next-and-prisma</guid>
-            <pubDate>Wed, 16 Nov 2022 17:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Data Modelling classification problem - Part 1]]></title>
-            <description><![CDATA[How can you train the model in data analytics with three different machine learning algorithm]]></description>
-            <link>https://ciara-blog.netlify.app/articles/data-modelling-using-scikit-learn</link>
-            <guid isPermaLink="true">https://ciara-blog.netlify.app/articles/data-modelling-using-scikit-learn</guid>
-            <pubDate>Fri, 17 Mar 2023 17:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[What frontend framework should you choose in 2023 ?]]></title>
-            <description><![CDATA[Choose front-end framework for your next application]]></description>
-            <link>https://ciara-blog.netlify.app/articles/front-end-framework-choice-2023</link>
-            <guid isPermaLink="true">https://ciara-blog.netlify.app/articles/front-end-framework-choice-2023</guid>
-            <pubDate>Sat, 19 Nov 2022 17:00:00 GMT</pubDate>
-        </item>
+        <lastBuildDate>Sat, 11 May 2024 05:17:09 GMT</lastBuildDate>
+        <atom:link href="https://blog.luanvothanh.com/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[Series Algorithm - Two Sum]]></title>
             <description><![CDATA[Leetcode Question 1. Two Sum - Easy]]></description>
-            <link>https://ciara-blog.netlify.app/articles/series-algorithm-two-sum</link>
-            <guid isPermaLink="true">https://ciara-blog.netlify.app/articles/series-algorithm-two-sum</guid>
-            <pubDate>Sat, 23 Dec 2023 17:00:00 GMT</pubDate>
+            <link>https://blog.luanvothanh.com/articles/algorithms/two-sum</link>
+            <guid isPermaLink="true">https://blog.luanvothanh.com/articles/algorithms/two-sum</guid>
+            <pubDate>Sun, 24 Dec 2023 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Series Algorithm - Valid Anagram]]></title>
             <description><![CDATA[Leetcode Question 242. Valid Anagram - Easy]]></description>
-            <link>https://ciara-blog.netlify.app/articles/series-algorithm-valid-anagram</link>
-            <guid isPermaLink="true">https://ciara-blog.netlify.app/articles/series-algorithm-valid-anagram</guid>
-            <pubDate>Sat, 23 Dec 2023 17:00:00 GMT</pubDate>
+            <link>https://blog.luanvothanh.com/articles/algorithms/valid-anagram</link>
+            <guid isPermaLink="true">https://blog.luanvothanh.com/articles/algorithms/valid-anagram</guid>
+            <pubDate>Sun, 24 Dec 2023 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Data Modelling classification problem - Part 1]]></title>
+            <description><![CDATA[How can you train the model in data analytics with three different machine learning algorithm]]></description>
+            <link>https://blog.luanvothanh.com/articles/data-analytics/data-modelling-using-scikit-learn</link>
+            <guid isPermaLink="true">https://blog.luanvothanh.com/articles/data-analytics/data-modelling-using-scikit-learn</guid>
+            <pubDate>Sat, 18 Mar 2023 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Understanding Scalability - Why It Matters in Technology]]></title>
+            <description><![CDATA[In this installment of Series System Design, we delve into the fundamental concept of scalability. Discover the essence of scalability and its pivotal role in designing systems that can effortlessly expand and handle increased demands. Uncover the key principles behind creating scalable architectures as we explore the crucial aspects that define scalability in the realm of system design.]]></description>
+            <link>https://blog.luanvothanh.com/articles/system-design/scalability</link>
+            <guid isPermaLink="true">https://blog.luanvothanh.com/articles/system-design/scalability</guid>
+            <pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Authentication and DB access with Next, Prisma]]></title>
+            <description><![CDATA[How to connect your mongoDB with prisma and next.js]]></description>
+            <link>https://blog.luanvothanh.com/articles/web-development/authentication-with-next-and-prisma</link>
+            <guid isPermaLink="true">https://blog.luanvothanh.com/articles/web-development/authentication-with-next-and-prisma</guid>
+            <pubDate>Thu, 17 Nov 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[What frontend framework should you choose ?]]></title>
+            <description><![CDATA[Choose front-end framework for your next application]]></description>
+            <link>https://blog.luanvothanh.com/articles/web-development/frontend-framework-comparison</link>
+            <guid isPermaLink="true">https://blog.luanvothanh.com/articles/web-development/frontend-framework-comparison</guid>
+            <pubDate>Sun, 20 Nov 2022 00:00:00 GMT</pubDate>
         </item>
     </channel>
 </rss>
