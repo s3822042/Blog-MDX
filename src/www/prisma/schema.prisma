@@ -20,7 +20,13 @@ model Comment {
 
 model Views {
   slug  String @id @db.VarChar(128)
-  count BigInt @default(1)
+  count Int @default(0)
 }
+
+model Newsletter {
+  email  String @id @db.VarChar(128)
+  isRegistered Boolean @default(false)
+}
+
 
 

@@ -13,6 +13,7 @@
     "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
     "prisma:migrate": "pnpm prisma migrate dev",
+    "prisma:push": "pnpm prisma db push",
     "typecheck": "contentlayer build && tsc --noEmit",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
