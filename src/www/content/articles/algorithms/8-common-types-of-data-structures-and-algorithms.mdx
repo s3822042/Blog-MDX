@@ -1,0 +1,160 @@
+---
+title: 8 Common Types of Data Structures and Algorithms
+publishedAt: "2024-05-30"
+description: Explore the fundamental data structures and algorithms every programmer should know.
+category: Algorithms
+tags:
+  - title: algorithm
+links:
+  coverImg: https://i.postimg.cc/nrNTvxd8/data-structure.jpg
+---
+
+Understanding data structures and algorithms is crucial for efficient problem-solving in programming. Here, we explore eight common types of data structures and algorithms that form the backbone of computer science, along with example code in Python and explanations of why they are needed.
+
+## Arrays
+Imagine a box with multiple compartments, each labeled with a number. This is an array, a collection of elements, usually of the same type, stored in contiguous memory locations. Arrays are perfect for those times when you need to quickly grab something by its index, like a professional organizer. For example, in Python:
+
+```python
+# Example of an array in Python
+arr = [1, 2, 3, 4, 5]
+print(arr[2])  # Output: 3
+```
+
+Arrays are great for storing data in a structured way, making it easy to search, sort, and iterate through the elements. Plus, they’re like the Swiss Army knife of data structures.
+
+## Linked Lists
+Next, think of a scavenger hunt where each clue leads you to the next. A linked list is a series of nodes where each node points to the next one, forming a chain. They are especially useful when you need to frequently add or remove items, like managing your daily tasks. Here's how a singly linked list looks in Python:
+
+```python
+# Example of a linked list in Python
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def append(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            return
+        last = self.head
+        while last.next:
+            last = last.next
+        last.next = new_node
+
+ll = LinkedList()
+ll.append(1)
+ll.append(2)
+ll.append(3)
+```
+
+Linked lists allow for efficient insertions and deletions compared to arrays, especially when dealing with dynamic data where the size of the data set can change frequently. They're like the adjustable belts of data structures—flexible and adaptable.
+
+## Stack
+Now, picture a stack of pancakes. You can only take the top pancake off first. That’s how a stack works, following the Last In, First Out (LIFO) principle. Stacks are great for undo functionality in applications or for evaluating expressions—anywhere you need to go back in time. For instance:
+
+```python
+# Example of stack in Python using list
+stack = []
+stack.append(1)
+stack.append(2)
+stack.append(3)
+print(stack.pop())  # Output: 3
+```
+
+Stacks help manage function calls, parse expressions, and navigate back in tasks, like a time machine for your code.
+
+## Queue
+On the other hand, think of a line at the coffee shop. The first person in line is the first one to get their coffee. That’s a queue, following the First In, First Out (FIFO) principle. Queues are perfect for scenarios where you need things to happen in order, like customer service systems or task scheduling. Here's a simple queue in Python:
+```python
+# Example of queue in Python using collections.deque
+from collections import deque
+queue = deque()
+queue.append(1)
+queue.append(2)
+queue.append(3)
+print(queue.popleft())  # Output: 1
+```
+
+## Trees
+Picture a family tree, with each node representing a family member. A tree is a hierarchical data structure with a root node and child nodes. Trees are ideal for representing hierarchical data, like file systems or organizational structures. Here's a binary tree example in Python:
+
+```python
+# Example of a binary tree in Python
+class TreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def insert(root, key):
+    if root is None:
+        return TreeNode(key)
+    if key < root.data:
+        root.left = insert(root.left, key)
+    else:
+        root.right = insert(root.right, key)
+    return root
+
+root = TreeNode(10)
+root = insert(root, 5)
+root = insert(root, 20)
+```
+Trees are fantastic for organizing data hierarchically, making them essential for search operations, databases, and file systems.
+
+## Graphs
+Now, think of a social network where each person (node) is connected to others (edges). A graph is a collection of nodes connected by edges. Graphs are used to represent networks, such as social media connections, transportation systems, and web page links. Here's an example of a graph in Python:
+
+```python
+# Example of a graph in Python using adjacency list
+graph = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D', 'E'],
+    'C': ['A', 'F'],
+    'D': ['B'],
+    'E': ['B', 'F'],
+    'F': ['C', 'E']
+}
+
+def bfs(graph, start):
+    visited = set()
+    queue = deque([start])
+    while queue:
+        vertex = queue.popleft()
+        if vertex not in visited:
+            print(vertex)
+            visited.add(vertex)
+            queue.extend(set(graph[vertex]) - visited)
+
+bfs(graph, 'A')
+```
+Graphs are key to solving problems involving networks, such as finding the shortest path, understanding social dynamics, and optimizing routes.
+
+## Hash Tables
+Imagine a super-efficient post office where each letter is assigned a unique box using a hash function. A hash table maps keys to values using such a function. Hash tables are great for quick lookups, insertions, and deletions, commonly used in databases and caching. Here's a simple hash table in Python:
+
+```python
+# Example of hash table in Python using dict
+hash_table = {}
+hash_table['one'] = 1
+hash_table['two'] = 2
+print(hash_table['one'])  # Output: 1
+```
+Hash tables allow for super-fast data retrieval, making them indispensable for implementing dictionaries, caches, and fast lookups.
+
+## Heaps
+Finally, think of a priority queue at the airport, where VIPs get served first. A heap is a tree-based structure that ensures the highest (or lowest) priority element is always at the top. Heaps are crucial for managing priority queues and optimizing algorithms like Dijkstra's shortest path, ensuring that the most important tasks are handled first. Here's a min heap example in Python:
+
+```python
+# Example of min heap in Python using heap
+import heapq
+heap = []
+heapq.heappush(heap, 3)
+heapq.heappush(heap, 1)
+heapq.heappush(heap, 2)
+print(heapq.heappop(heap))  # Output: 1
+```
